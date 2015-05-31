@@ -2,11 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da421fb9-1602-42ba-bb48-47584c4739a4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/PythonProjects.iml" afterPath="$PROJECT_DIR$/.idea/PythonProjects.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assignments/3/Question 1.py" afterPath="$PROJECT_DIR$/Assignments/3/Question 1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Assignments/3/Question 2.py" afterPath="$PROJECT_DIR$/Assignments/3/Question 2.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/addressBook" />
+      <change type="DELETED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\addressBook" afterPath="" />
+      <change type="DELETED" beforePath="D:\Documents\Laurence\University\Programming\uni\test.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1A\Assessment 1A.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1A/Assessment 1A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1A\Bonus part.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1A/Bonus part.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1A\Laurence_1A.zip" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1A/Laurence_1A.zip" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1B\AdCreator.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1B/AdCreator.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1B\InvestmentCalc.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1B/InvestmentCalc.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\1B\numMultiples.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/1B/numMultiples.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\2A\159171_A2A.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/2A/159171_A2A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\2A\pythonwiki.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/2A/pythonwiki.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\2A\pythonwiki_cipher.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/2A/pythonwiki_cipher.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Adjectives.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Adjectives.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Adverbs.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Adverbs.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Conjunctions.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Conjunctions.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\IntransitiveVerbs.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/IntransitiveVerbs.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Leadin.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Leadin.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\NounMarkers.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/NounMarkers.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Nouns.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Nouns.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Question 1.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Question 1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\Question 2.py" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/Question 2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Assignments\3\TransitiveVerbs.txt" afterPath="$PROJECT_DIR$/Semester 1/Assignments/3/TransitiveVerbs.txt" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem3.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem3.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem4.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem4.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem5.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem5.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 10\Problem6.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem6.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\10.1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/10.1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\9.1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/9.1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\9.2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/9.2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\9.3.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/9.3.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\Simple calculators\EQN1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/Simple calculators/EQN1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\Simple calculators\EQN2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/Simple calculators/EQN2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\Simple calculators\ParallelResist.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/Simple calculators/ParallelResist.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\Simple calculators\SphereVol.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/Simple calculators/SphereVol.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 1\Simple calculators\TempConverter.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/Simple calculators/TempConverter.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 2\Excercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 2/Excercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 2\Exercise B" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 2/Exercise B" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 2\Exercise C.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 2/Exercise C.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 2\Exercise D" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 2/Exercise D" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\EQN1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/EQN1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\ParallelResist.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/ParallelResist.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\SphereVol.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/SphereVol.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\TempConverter.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/TempConverter.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\avg.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/avg.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 2\Part 3\avg4.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 2/Part 3/avg4.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 3\Part 1\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 3/Part 1/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 3\Part 1\Exercise B.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 3/Part 1/Exercise B.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 3\Part 2\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 3/Part 2/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 3\Part 2\Exercise B.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 3/Part 2/Exercise B.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 3\Part 3\drawSpiral.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 3/Part 3/drawSpiral.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 4\Part 1\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 4/Part 1/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 4\Part 2\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 4/Part 2/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 4\Part 2\Exercise B.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 4/Part 2/Exercise B.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 4\Part 3\Bonus.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 4/Part 3/Bonus.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 5\Part 1\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 5/Part 1/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 5\Part 1\Exercise B.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 5/Part 1/Exercise B.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 5\Part 2\Exercise A.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 5/Part 2/Exercise A.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 5\Part 2\Exercise B.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 5/Part 2/Exercise B.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 6\Part 1\Exercise 1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 1/Exercise 1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 6\Part 1\Exercise 2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 1/Exercise 2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 6\Part 2\Money Dispenser.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 2/Money Dispenser.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 6\Part 3\ExerciseA.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 3/ExerciseA.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 6\Part 3\PaperScissorRock.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 3/PaperScissorRock.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 7\p1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 7\p2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 7\p3.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p3.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 8\Problem1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 8\Problem2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 8\Problem3.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem3.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 9\Problem 1.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 1.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 9\Problem 2.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 2.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\Tutorials\Tutorial 9\Problem 3.py" afterPath="$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 3.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\EstPi.py" afterPath="$PROJECT_DIR$/Semester 1/projects/EstPi.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\GuessMyNumber.py" afterPath="$PROJECT_DIR$/Semester 1/projects/GuessMyNumber.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\NumberGuesser.py" afterPath="$PROJECT_DIR$/Semester 1/projects/NumberGuesser.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\hashPass\createRainbowTable.py" afterPath="$PROJECT_DIR$/Semester 1/projects/hashPass/createRainbowTable.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\hashPass\hashPassRainbow.py" afterPath="$PROJECT_DIR$/Semester 1/projects/hashPass/hashPassRainbow.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\hashPass\hashPasswords.py" afterPath="$PROJECT_DIR$/Semester 1/projects/hashPass/hashPasswords.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\pyception.py" afterPath="$PROJECT_DIR$/pyception.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\Dice.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/Dice.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\MarkAverage.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/MarkAverage.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\asciPrint.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/asciPrint.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\demoSongProg.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/demoSongProg.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\functions.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/functions.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\inputTaker.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/inputTaker.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\smallTests\typesTest.py" afterPath="$PROJECT_DIR$/Semester 1/projects/smallTests/typesTest.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\turtlePatterns\CircleCurveStitch.py" afterPath="$PROJECT_DIR$/Semester 1/projects/turtlePatterns/CircleCurveStitch.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\turtlePatterns\orbitLines.py" afterPath="$PROJECT_DIR$/Semester 1/projects/turtlePatterns/orbitLines.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\turtlePatterns\spirals.py" afterPath="$PROJECT_DIR$/Semester 1/projects/turtlePatterns/spirals.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\projects\turtlePatterns\tree.py" afterPath="$PROJECT_DIR$/Semester 1/projects/turtlePatterns/tree.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\pygame_template.py" afterPath="$PROJECT_DIR$/Misc/pygame_template.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\randChars.py" afterPath="$PROJECT_DIR$/Misc/randChars.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\setup.py" afterPath="$PROJECT_DIR$/Misc/setup.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\stackCalculator.py" afterPath="$PROJECT_DIR$/Misc/stackCalculator.py" />
+      <change type="MOVED" beforePath="D:\Documents\Laurence\University\Programming\uni\tGraphics.py" afterPath="$PROJECT_DIR$/Misc/tGraphics.py" />
     </list>
     <ignored path="PythonProjects.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,33 +120,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Differential calculator.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Differential calculator.py">
+      <file leaf-file-name="Question 1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/Question 1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pyception.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projects/pyception.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-              <folding>
-                <element signature="e#262#275#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Question 1.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assignments/3/Question 1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.11645813">
-              <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
                 <element signature="e#262#337#0" expanded="true" />
               </folding>
@@ -61,8 +132,50 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pyception.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pyception.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.887165">
+              <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+              <folding>
+                <element signature="e#262#275#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EstPi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Semester 1/projects/EstPi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pygame_template.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Misc/pygame_template.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="9.1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/9.1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Question 2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignments/3/Question 2.py">
+        <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/Question 2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
@@ -75,6 +188,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/spaceInvaders/bullet.py" />
         <option value="$PROJECT_DIR$/spaceInvaders/constants.py" />
         <option value="$PROJECT_DIR$/spaceInvaders/enemies.py" />
         <option value="$PROJECT_DIR$/spaceInvaders/player.py" />
@@ -128,11 +247,12 @@
         <option value="$PROJECT_DIR$/Tutorials/Tutorial 10/Problem4.py" />
         <option value="$PROJECT_DIR$/Tutorials/Tutorial 10/Problem5.py" />
         <option value="$PROJECT_DIR$/Tutorials/Tutorial 10/Problem6.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/Differential calculator.py" />
         <option value="$PROJECT_DIR$/Assignments/3/IntransitiveVerbs.txt" />
         <option value="$PROJECT_DIR$/Assignments/3/Question 2.py" />
         <option value="$PROJECT_DIR$/Assignments/3/Question 1.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Semester 1/projects/EstPi.py" />
       </list>
     </option>
   </component>
@@ -203,38 +323,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uni" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PythonProjects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uni" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Assignments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -248,38 +336,19 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Documents\Laurence\University\Programming\uni\Misc" />
+      <recent name="D:\Documents\Laurence\University\Programming\uni\Semester 1" />
+      <recent name="D:\Documents\Laurence\University\Programming\uni" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Assignments/2A" />
-      <recent name="$PROJECT_DIR$/Tutorials/Tutorial 6/Part 1" />
-      <recent name="$PROJECT_DIR$/spaceInvaders/resources" />
-      <recent name="$PROJECT_DIR$/ADT" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Question 2">
-    <configuration default="false" name="Problem5" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tutorials/Tutorial 10" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="PythonProjects" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tutorials/Tutorial 10/Problem5.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.test">
     <configuration default="false" name="Problem6" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -354,6 +423,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PythonProjects" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -479,19 +565,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Problem5" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Problem6" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Question 1" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Differential calculator" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Question 2" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Problem6" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Question 1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Differential calculator" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Question 2" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Question 2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Question 1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Differential calculator" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Problem6" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Problem5" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Question 2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Question 1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Differential calculator" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Problem6" />
       </list>
     </recent_temporary>
   </component>
@@ -506,31 +592,39 @@
       <option name="number" value="Default" />
       <updated>1433071918257</updated>
     </task>
+    <task id="LOCAL-00001" summary="Assignment updates">
+      <created>1433072264645</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1433072264645</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08541667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32738504" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30927834" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30954015" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -544,6 +638,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Assignment updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment updates" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="17" />
@@ -551,87 +649,77 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assignments/3/Question 2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#262#312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 6/Part 1/Exercise 2.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 1/Exercise 2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13438736">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 6/Part 3/PaperScissorRock.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 3/PaperScissorRock.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52964425">
           <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 6/Part 3/ExerciseA.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 3/ExerciseA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.52964425">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/2A/pythonwiki.txt">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/2A/pythonwiki.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="20" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 6/Part 2/Money Dispenser.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 6/Part 2/Money Dispenser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.100790516">
           <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/1A/Assessment 1A.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/1A/Assessment 1A.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11724138">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/1A/Bonus part.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/1A/Bonus part.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49686846">
           <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stackCalculator.py">
+    <entry file="file://$PROJECT_DIR$/Misc/stackCalculator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50395256">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/1B/InvestmentCalc.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/1B/InvestmentCalc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/1B/numMultiples.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/1B/numMultiples.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/1B/AdCreator.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/1B/AdCreator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16798419">
           <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
@@ -680,28 +768,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/EstPi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47035572">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 7/p2.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 7/p3.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 7/p1.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 7/p1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
@@ -715,28 +796,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/2A/159171_A2A.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/2A/159171_A2A.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.7885375">
           <caret line="83" column="26" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 8/Problem2.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 8/Problem1.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 8/Problem3.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 8/Problem3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34172663">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
@@ -750,7 +831,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/randChars.py">
+    <entry file="file://$PROJECT_DIR$/Misc/randChars.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
@@ -799,90 +880,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 9/Problem 1.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 9/Problem 3.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 9/Problem 2.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 9/Problem 2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21113689">
           <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/3/addressBook">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/projects/pyception.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
           <folding>
-            <element signature="e#262#275#0" expanded="true" />
+            <element signature="e#318#354#0" expanded="false" />
+            <element signature="e#382#448#0" expanded="false" />
+            <element signature="e#501#598#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3549884">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3549884">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tutorials/Tutorial 10/Problem6.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5522042">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/addressBook">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3549884">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3549884">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 10/Problem6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5522042">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -894,14 +971,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/3/IntransitiveVerbs.txt">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/IntransitiveVerbs.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6960082">
           <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/3/Question 2.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/Question 2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
@@ -911,12 +988,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments/3/Question 1.py">
+    <entry file="file://$PROJECT_DIR$/Semester 1/Assignments/3/Question 1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11645813">
-          <caret line="227" column="0" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
             <element signature="e#262#337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/Tutorials/Tutorial 1/9.1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Semester 1/projects/EstPi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Misc/pygame_template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.887165">
+          <caret line="88" column="28" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+          <folding>
+            <element signature="e#262#275#0" expanded="true" />
           </folding>
         </state>
       </provider>

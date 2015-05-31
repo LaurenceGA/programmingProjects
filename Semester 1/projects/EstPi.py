@@ -13,7 +13,7 @@ def estimatePi(n):
             k += 1
     print("Finished in %f seconds" % (time.clock()))
 
-    return (4 * k / n)
+    return 4 * k / n
 
 ePI = estimatePi(1000)
 print(ePI)
