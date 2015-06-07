@@ -5,11 +5,11 @@ authorship_string = "%s created on %s by %s (%d)\n%s\n" % \
     if __name__ == '__main__' else ""
 print(authorship_string, end="")
 
-from spaceInvaders.gameObject import Object
-from spaceInvaders.constants import *
-import spaceInvaders.bullet
-import spaceInvaders.player
-from spaceInvaders.spriteSheet import SpriteSheet
+from gameObject import Object
+from constants import *
+import bullet
+import player
+from spriteSheet import SpriteSheet
 
 import pygame
 
@@ -137,7 +137,7 @@ class Enemy(Object):
                     if enm.y > self.y:
                         break
             else:
-                self.instance_handler.instantiate(spaceInvaders.bullet.EnemyBullet(self.x, self.y, 5))
+                self.instance_handler.instantiate(bullet.EnemyBullet(self.x, self.y, 5))
 
     def jump(self, dx, dy):
         self.x += dx
@@ -161,11 +161,11 @@ class Enemy(Object):
             if enem == self:
                 del self.parent_list.enemies[self.parent_list.enemies.index(enem)]
         if len(self.parent_list.enemies) == 0:
-            self.instance_handler.remove_of_type(spaceInvaders.bullet.Bullet)
+            self.instance_handler.remove_of_type(bullet.Bullet)
             self.parent_list.destroy()
             self.instance_handler.instantiate(EnemyGroup(self.parent_list.y_begin + self.parent_list.y_change, self.parent_list.time_to_move*1.2))
             for inst in self.instance_handler.instances:
-                if type(inst) is spaceInvaders.player.Player:
+                if type(inst) is player.Player:
                     inst.lives += 1
                     break
 

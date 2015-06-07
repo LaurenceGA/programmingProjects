@@ -11,8 +11,8 @@ import os
 # import bigEatLittle.gameObject as gameObject
 # import spaceInvaders.player as player
 # import bigEatLittle.inputHandler as inp
-import bigEatLittle.constants as const
-import bigEatLittle.game as game
+import constants as const
+import game as game
 
 os.environ["SDL_VIDEO_CENTERED"] = "1"
 pygame.init()

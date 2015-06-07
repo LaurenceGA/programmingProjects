@@ -8,10 +8,10 @@ print(authorship_string, end="")
 import pygame
 import random
 
-import bigEatLittle.gameObject as gameObject
-import bigEatLittle.inputHandler as inp
-import bigEatLittle.fish as fish
-from bigEatLittle.constants import *
+import gameObject as gameObject
+import inputHandler as inp
+import fish as fish
+from constants import *
 
 
 class Game():

@@ -6,7 +6,7 @@ authorship_string = "%s created on %s by %s (%d)\n%s\n" % \
 print(authorship_string, end="")
 
 import pygame
-import spaceInvaders.constants as const
+import constants as const
 
 
 class SpriteSheet():

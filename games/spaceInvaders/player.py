@@ -5,9 +5,9 @@ authorship_string = "%s created on %s by %s (%d)\n%s\n" % \
     if __name__ == '__main__' else ""
 print(authorship_string, end="")
 
-from spaceInvaders.gameObject import Object
-from spaceInvaders.constants import *
-from spaceInvaders.bullet import Bullet
+from gameObject import Object
+from constants import *
+from bullet import Bullet
 
 import pygame
 
@@ -50,7 +50,7 @@ class Player(Object):
 
         # Draw the score
         # Render the text. "True" means anti-aliased text.
-        text = self.instance_handler.font.render("Score: %d\t Lives: %d" % (self.score, self.lives), True, WHITE)
+        text = self.instance_handler.font.render("Score: %d     Lives: %d" % (self.score, self.lives), True, WHITE)
 
         # Put the image of the text on the screen
         screen.blit(text, [20, 20])

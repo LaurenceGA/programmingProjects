@@ -5,12 +5,12 @@ authorship_string = "%s created on %s by %s (%d)\n%s\n" % \
     if __name__ == '__main__' else ""
 print(authorship_string, end="")
 
-from spaceInvaders.gameObject import Object
-from spaceInvaders.constants import *
-import spaceInvaders.enemies as enemies
-import spaceInvaders.player
-from spaceInvaders.spriteSheet import SpriteSheet
-from spaceInvaders.barrier import Barrier
+from gameObject import Object
+from constants import *
+import enemies as enemies
+import player
+from spriteSheet import SpriteSheet
+from barrier import Barrier
 
 import pygame
 
@@ -43,7 +43,7 @@ class Bullet(Object):
         if issubclass(type(inst), enemies.Enemy):
                 if abs((self.x - inst.x) / inst.width) < 0.5 and abs((self.y - inst.y) / inst.height) < 1:
                     self.instance_handler.instantiate(Explosion(inst.x, inst.y, inst.width, inst.height))
-                    self.instance_handler.find_first_of_type(spaceInvaders.player.Player).add_score(inst.value)
+                    self.instance_handler.find_first_of_type(player.Player).add_score(inst.value)
 
                     inst.destroy()
                     self.destroy()
@@ -56,7 +56,7 @@ class Bullet(Object):
 
 class EnemyBullet(Bullet):
     def target_collide(self, inst):
-        if type(inst) is spaceInvaders.player.Player:
+        if type(inst) is player.Player:
             if abs((self.x - inst.x) / inst.width) < 0.5 and abs((self.y - inst.y) / inst.height) < 1:
                 inst.die()
 

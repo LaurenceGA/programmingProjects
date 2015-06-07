@@ -6,7 +6,7 @@ authorship_string = "{} created on {} by {} ({})\n{}\n".format(
 print(authorship_string, end="")
 
 import pygame
-import bigEatLittle.constants as const
+import constants as const
 
 
 class SpriteSheet():

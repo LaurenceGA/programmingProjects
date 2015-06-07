@@ -5,9 +5,8 @@ authorship_string = "{} created on {} by {} ({})\n{}\n".format(
     if __name__ == '__main__' else ""
 print(authorship_string, end="")
 
-from bigEatLittle.gameObject import Object
-from bigEatLittle.constants import *
-from bigEatLittle.spriteSheet import SpriteSheet
+from gameObject import Object
+from constants import *
 
 import pygame
 import random

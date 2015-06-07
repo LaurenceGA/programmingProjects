@@ -5,12 +5,12 @@ print("%s created on %s by %s (%d)\n%s\n" % ("main.py", "7/04/15", __author__, 1
 import pygame
 import os
 
-import spaceInvaders.gameObject as gameObject
-import spaceInvaders.player as player
-import spaceInvaders.inputHandler as inp
-import spaceInvaders.constants as const
-import spaceInvaders.enemies as enemies
-import spaceInvaders.barrier as barrier
+import gameObject as gameObject
+import player as player
+import inputHandler as inp
+import constants as const
+import enemies as enemies
+import barrier as barrier
 
 
 def make_barrier(barrier_start):

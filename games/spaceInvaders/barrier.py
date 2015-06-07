@@ -5,8 +5,8 @@ authorship_string = "%s created on %s by %s (%d)\n%s\n" % \
     if __name__ == '__main__' else ""
 print(authorship_string, end="")
 
-from spaceInvaders.gameObject import Object
-from spaceInvaders.spriteSheet import SpriteSheet
+from gameObject import Object
+from spriteSheet import SpriteSheet
 
 import pygame
 

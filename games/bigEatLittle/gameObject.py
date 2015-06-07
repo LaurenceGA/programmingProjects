@@ -7,7 +7,7 @@ print(authorship_string, end="")
 
 import pygame
 
-from bigEatLittle.constants import *
+from constants import *
 
 
 class InstanceList:
