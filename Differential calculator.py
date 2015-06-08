@@ -79,12 +79,19 @@ def get_derivative(eqn):
 
 
 def derive(eqn):
+    eqn = eqn.strip()
     eqn_parts = []
     part_start = 0
     part_end = 1
 
+    skip = True if eqn[0] in ['+', '-'] else False
+
     for char in eqn:
-        if (char in ['+', '-'] or part_end == len(eqn)) and not part_end == 1:
+        if skip == True:
+            skip = False
+            part_end += 1
+            continue
+        if char in ['+', '-'] or part_end == len(eqn):
             if part_end == len(eqn):
                 eqn_parts.append([eqn[part_start:part_end].strip(), ""])
             else:
@@ -92,20 +99,60 @@ def derive(eqn):
             part_start = part_end
         part_end += 1
 
+    # print(eqn_parts)
+
     for i in range(len(eqn_parts)):
         eqn_parts[i][0] = get_derivative(eqn_parts[i][0])
-        if eqn_parts[i][0] == '0':
-            eqn_parts[i] = ('', '')
+        if eqn_parts[i][0] == '0' and len(eqn_parts) > 1:
+            eqn_parts[i][0] = ''
+            # print(eqn_parts)
             if eqn_parts[i-1]:
                 eqn_parts[i-1][1] = ''
 
-        eqn_parts[i] = " ".join(eqn_parts[i])
+    eqn_parts = [" ".join(part).strip() for part in eqn_parts]
+    # print(eqn_parts)
 
-    final_eqn = " ".join(eqn_parts)
+    final_eqn = " ".join(eqn_parts).strip()
+
+    indicies = []
+
+    for i, char in enumerate(final_eqn):
+        if char == ' ':
+            if i == 0:
+                indicies.append(i)
+            elif i == len(final_eqn)-1:
+                indicies.append(i)
+
+            if i+1 < len(final_eqn):
+                if final_eqn[i+1] == ' ':
+                    indicies.append(i+1)
+
+    final_eqn = list(final_eqn)
+
+    for i in sorted(set(indicies), reverse=True):
+        del final_eqn[i]
+
+    # print(final_eqn)
+
+    final_eqn = ''.join(final_eqn)
 
     return final_eqn
 
-equation = input("Enter an equation: ")
+# equation = input("Enter an equation: ")
 
 
-print("The derivative is {}".format(derive(equation)))
+test_cases = ['315x^513 - 134r - 134 - 1324 + 1342 - f + 134',
+              '124 - r - 124',
+              '5x^2',
+              'x',
+              '1',
+              'x^1',
+              'a - a - a + 1',
+              '-5'
+]
+
+# test_cases = ['3']
+
+for test in test_cases:
+    print("{}:\n\t<{}>\n".format(test, derive(test)))
+# print("The derivative is {}".format(derive(equation)))
