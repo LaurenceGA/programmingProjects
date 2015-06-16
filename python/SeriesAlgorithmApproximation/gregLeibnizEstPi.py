@@ -21,7 +21,11 @@ def lieb(degree):
     return 4 * current
 
 start = clock()
-pi = lieb(5000000)
+pi = lieb(50000000)
 time = clock() - start
 print(pi)
 print("Done in {} seconds".format(time))
+
+
+# 3.1415926 5359
+#          ^50 million iterations of series in 36.2 seconds

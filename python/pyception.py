@@ -56,26 +56,82 @@ class TextBox(UiBox):
         self.font = pygame.font.Font(None, 36)
         self.font_colour = (255, 255, 255)
 
+        self.cursor_pos = 0
+        self.blink_timer = 0
+        self.blink_speed = 500
+        self.blink = True
+
+        self.typing = False
+        self.type_timer = 0
+        self.type_time = 1000
+
     def handle_input(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
-                self.buffer.append('\n')
+                self.buffer.insert(self.cursor_pos, '\n')
+                self.cursor_pos += 1
             elif event.key == pygame.K_BACKSPACE:
-                if self.buffer:
-                    self.buffer.pop()
+                if self.buffer and self.cursor_pos > 0:
+                    self.buffer.pop(self.cursor_pos-1)
+                    self.cursor_pos -= 1
             elif event.key == pygame.K_TAB:
-                self.buffer.append("    ")
-            elif event.unicode in ACCEPTED:
-                self.buffer.append(event.unicode)
+                self.buffer[self.cursor_pos:self.cursor_pos] = [' '] * 4
+                self.cursor_pos += 4
+            elif event.unicode in ACCEPTED and len(event.unicode) > 0:
+                self.buffer.insert(self.cursor_pos, event.unicode)
+                self.cursor_pos += 1
+            elif event.key == pygame.K_LEFT:
+                if self.cursor_pos > 0:
+                    self.cursor_pos -= 1
+            elif event.key == pygame.K_RIGHT:
+                if self.cursor_pos < len(self.buffer):
+                    self.cursor_pos += 1
+
+            self.typing = True
+            self.type_timer = 0
         # elif event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
         #     self.active = self.rect.collidepoint(event.pos)
 
     def draw(self, screen):
         super().draw(screen)
         text = "".join(self.buffer)
-        txt = self.font.render(text, True, self.font_colour)
-        t_size = self.font.size(text)
-        screen.blit(txt, [self.x + 10, self.y + 10])
+        lines = text.splitlines()
+        for i, line in enumerate(lines):
+            txt = self.font.render(line, True, self.font_colour)
+            t_size = self.font.size(text)
+            screen.blit(txt, [self.x + 10, self.y + 10 + (i*t_size[1])])
+
+        # Typing timer
+        self.type_timer += clock.get_time()
+        if self.type_timer >= self.type_time:
+            self.typing = False
+
+        # Cursor
+        self.blink_timer += clock.get_time()
+        if self.blink_timer > self.blink_speed:
+            self.blink_timer = 0
+            self.blink = not self.blink
+
+        if self.cursor_pos > 0:
+            cursor_line = text[:self.cursor_pos].splitlines(keepends=True)
+            line_num = len(cursor_line) - 1
+            cursor_line = cursor_line[-1]
+
+            if cursor_line[-1] == '\n':
+                line_num += 1
+                cursor_line = ''
+        else:
+            cursor_line = ''
+            line_num = 0
+        line_size = self.font.size(cursor_line)
+        # draw_pos = self.cursor_pos
+
+        if self.blink or self.typing:
+            pygame.draw.rect(screen, self.font_colour, [self.x + 10 + line_size[0],
+                                                        self.y + 10 + line_size[1]*line_num,
+                                                        2,
+                                                        line_size[1]], 0)
+
 
 
 class OutputBox(UiBox):
@@ -87,9 +143,13 @@ class OutputBox(UiBox):
 
     def draw(self, screen):
         super().draw(screen)
-        txt = self.font.render(self.text.getvalue(), True, self.font_colour)
-        t_size = self.font.size(self.text.getvalue())
-        screen.blit(txt, [self.x + 5, self.y + 5])
+        text = self.text.getvalue()
+        lines = text.splitlines()
+        for i, line in enumerate(lines):
+            txt = self.font.render(line, True, self.font_colour)
+            t_size = self.font.size(text)
+            screen.blit(txt, [self.x + 5, self.y + 5 + (i*t_size[1])])
+
 
 
 class Button(UiBox):
@@ -132,10 +192,10 @@ def event_loop():
             for box in boxes:
                 box.handle_input(event)
 
-main_box_size = (800, 400)
-main_box_height = 100
+main_box_size = (1000, 500)
+main_box_height = 50
 button_size = (80, 40)
-output_size = (800, 250)
+output_size = (1000, 300)
 
 t_box = TextBox(screen_size[0]/2 - main_box_size[0]/2,
                 main_box_height,
@@ -143,7 +203,7 @@ t_box = TextBox(screen_size[0]/2 - main_box_size[0]/2,
                 main_box_size[1])
 
 out_box = OutputBox(screen_size[0]/2 - output_size[0]/2,
-                    main_box_height + main_box_size[1] + output_size[1]/2,
+                    main_box_height + main_box_size[1] + output_size[1]/4,
                     output_size[0],
                     output_size[1])
 
