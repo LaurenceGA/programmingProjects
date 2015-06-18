@@ -1,0 +1,3 @@
+Player: Adol
+Health: 100
+Gold: 75
