@@ -28,6 +28,27 @@ done = False
 def new_linify(string):
     return string.replace('\\n', '\n')
 
+def dist_from_line(string, index):
+    # Find distance from most recent \n char
+    string = string[:index]
+    nline_index = string.rfind('\n')
+
+    return index - nline_index
+
+
+def find_line_num(text, pos):
+    if pos > 0:
+        lines_to = text[:pos].splitlines(keepends=True)
+        line_num = len(lines_to) - 1
+
+        if lines_to[-1][-1] == '\n':
+            line_num += 1
+    else:
+        line_num = 0
+
+    return line_num
+
+
 class UiBox:
     def __init__(self, x, y, width, height, fill=True):
         self.x = x
@@ -86,6 +107,35 @@ class TextBox(UiBox):
             elif event.key == pygame.K_RIGHT:
                 if self.cursor_pos < len(self.buffer):
                     self.cursor_pos += 1
+            elif event.key in (pygame.K_UP, pygame.K_DOWN):
+                text = "".join(self.buffer)
+
+                line_num = find_line_num(text, self.cursor_pos)
+                lines = text.splitlines(keepends=True)
+
+                if self.cursor_pos > 0:
+                    cursor_line = text[:self.cursor_pos].splitlines(keepends=True)[-1]
+                    if cursor_line[-1] == '\n':
+                        cursor_line = ''
+                else:
+                    cursor_line = ''
+
+                if lines:
+                    if event.key == pygame.K_UP:
+                        if line_num != 0:
+                            dist_to_remove = len(cursor_line) + 1
+                            dist_to_remove += max(0, len(lines[line_num-1]) - len(cursor_line) - 1)
+                            self.cursor_pos -= dist_to_remove
+                        else:
+                            self.cursor_pos = 0
+                    elif event.key == pygame.K_DOWN:
+                        if line_num != len(lines) - 1:
+                            dist_to_add = len(lines[line_num]) - len(cursor_line)
+                            dist_to_add += min(len(cursor_line), len(lines[line_num+1])-1)
+                            self.cursor_pos += dist_to_add
+                        else:
+                            self.cursor_pos = len(text)
+
 
             self.typing = True
             self.type_timer = 0
@@ -93,6 +143,7 @@ class TextBox(UiBox):
         #     self.active = self.rect.collidepoint(event.pos)
 
     def draw(self, screen):
+        # Mixed draw + logic
         super().draw(screen)
         text = "".join(self.buffer)
         lines = text.splitlines()
@@ -112,26 +163,31 @@ class TextBox(UiBox):
             self.blink_timer = 0
             self.blink = not self.blink
 
+        # if self.cursor_pos > 0:
+        #     cursor_line = text[:self.cursor_pos].splitlines(keepends=True)
+        #     line_num = len(cursor_line) - 1
+        #     cursor_line = cursor_line[-1]
+        #
+        #     if cursor_line[-1] == '\n':
+        #         line_num += 1
+        #         cursor_line = ''
+        # else:
+        #     cursor_line = ''
+        #     line_num = 0
+        line_num = find_line_num(text, self.cursor_pos)
         if self.cursor_pos > 0:
-            cursor_line = text[:self.cursor_pos].splitlines(keepends=True)
-            line_num = len(cursor_line) - 1
-            cursor_line = cursor_line[-1]
-
+            cursor_line = text[:self.cursor_pos].splitlines(keepends=True)[-1]
             if cursor_line[-1] == '\n':
-                line_num += 1
                 cursor_line = ''
         else:
             cursor_line = ''
-            line_num = 0
         line_size = self.font.size(cursor_line)
-        # draw_pos = self.cursor_pos
 
         if self.blink or self.typing:
             pygame.draw.rect(screen, self.font_colour, [self.x + 10 + line_size[0],
                                                         self.y + 10 + line_size[1]*line_num,
                                                         2,
                                                         line_size[1]], 0)
-
 
 
 class OutputBox(UiBox):
