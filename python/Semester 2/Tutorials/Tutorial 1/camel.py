@@ -47,6 +47,7 @@ def offer_choice():
 
 
 def show_status(miles, drinks, natives):
+    # Just shows basic information
     print "\nYou and {} have traveled: {} miles".format(camel_name, miles)
     print "Drinks in canteen: {}".format(drinks)
     print "The natives are {} miles behind you, but seem to be getting closer\n".format(natives)
@@ -118,20 +119,22 @@ while not done:
     # RANDOM EVENTS #
 
     # Maybe find an Oasis
-    if random.randint(1, 20) == 1:
+    if random.randint(1, 20) == 1:  # 1/20 times
         print "You found an Oasis!\n"
         canteen_drinks = max_drinks
         thirst = 0
         camel_tiredness = 0
     # Sandstorm
-    elif random.randint(1, 20) == 1:    # Actually 1/20 * 19/20 chance
+    elif random.randint(1, 20) == 1:    # Actually 1/20 * 19/20 chance (purposefully)
         print "You run into a sandstorm! It's thirsty work\n"
         thirst += random.randint(2, 3)
     # Find a traveler
-    elif random.randint(1, 20) == 1:    # Actually 1/20 * 19/20 * 19/20 chance
+    elif random.randint(1, 20) == 1:    # Actually 1/20 * 19/20 * 19/20 chance etc.
         print "You stumble upon a traveler\n"
+
+        # As a traveler provides high risk for high reward, the player can opt out of the risk
         confront = False
-        while True:
+        while True:     # Make sure they make a definite decision
             approach = raw_input("Do you approach the traveler? ")
             if approach.lower() in ("no", 'nah', 'hell no', 'n'):
                 print "You hurry away quickly.\n"
@@ -145,25 +148,34 @@ while not done:
                 print "That's not a valid input, try again\n"
 
         if confront:
+            # Get a better canteen
             if random.randint(1, 10) == 1:
+                # Gender equality is important.
                 print "The traveler it kind hearted and lets you swap canteens." \
                       " {} is bigger and filled to the brim!\n".format(random.choice(("His", "Hers")))
                 max_drinks = max(max_drinks, random.randint(4, 6))  # Make it bigger unless it's already bigger
                 canteen_drinks = max_drinks
+
+            # Have your canteen stolen
             elif random.randint(1, 20) == 1:
-                print "You chat for a bit but once you say your farewells you notice your canteen is missing! " \
-                      "You turn around but the traveler is nowhere to be seen\n"
+                print "You chat for a bit but once you say your farewells you notice your canteen is missing! "
+                print "You turn around but the traveler is nowhere to be seen\n"
                 canteen_drinks = 0
                 max_drinks = 0
+
+            # Instantly die because you get stabbed
             elif random.randint(1, 40) == 1:
                 print "While you're back was turned the traveler stabs you!\nYou died"
                 print "He also stabs {0}, {0} also dies.\n".format(camel_name)
+                # This code is repeated and could be functionised
                 print "You had traveled {} miles," \
                       " {} drinks were left in your canteen" \
                       " and the natives were {} miles behind you".format(miles_traveled,
                                                                          canteen_drinks,
                                                                          miles_traveled - natives_distance)
                 done = True
+
+            # Get attacked and have the natives catch up a bit
             elif random.randint(1, 30) == 1:
                 natives_distance += random.randint(4, 20)
                 print "The traveler leaps at you and you fall from your camel." \
@@ -171,12 +183,20 @@ while not done:
                 print "You wake up dazed with {} licking at your face," \
                       " you don't know how long you were gone".format(camel_name)
                 print "Nothing appears to be stolen and the traveler is gone\n"
-            else:
+
+            # Get some free water
+            elif random.randint(1, 3) == 1:
                 print "{} a generous one who gives you some water\n".format(random.choice(("He's", "She's")))
                 canteen_drinks += random.randint(1, 2)
                 # If you now have excess water, drink it if you are thirsty
                 thirst -= max(0, canteen_drinks - max_drinks)
                 canteen_drinks = min(canteen_drinks, max_drinks)
+
+            # Default nothing happens
+            else:
+                print "You chat for a moment but soon go your separate ways."
+                print "The brief interaction was a surprisingly pleasant interruption\n"
+
     # Lost water
     elif random.randint(1, 20) == 1:    # Actually 1/20 * 19/20 * 19/20 * 19/20 chance
         print "You discover there was a leak in your canteen!",

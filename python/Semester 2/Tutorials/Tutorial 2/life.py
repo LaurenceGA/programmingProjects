@@ -49,15 +49,15 @@ alive = []
 started = False
 
 
-def neighbours(row, column):
-    neighbours = []
+def neighbours(target_row, target_column):
+    cell_neighbours = []
     # Conditional statements make sure cells won't be checked if they are off the board
-    for i in range(0 if row == 0 else -1, 1 if row == len(grid[0])-1 else 2):
-        for j in range(0 if column == 0 else -1, 1 if column == len(grid)-1 else 2):
+    for i in range(0 if target_row == 0 else -1, 1 if target_row == len(grid[0])-1 else 2):
+        for j in range(0 if target_column == 0 else -1, 1 if target_column == len(grid)-1 else 2):
             if i != 0 or j != 0:  # Can't be a neighbour with itself
-                neighbours.append((row + i, column + j))
+                cell_neighbours.append((target_row + i, target_column + j))
 
-    return neighbours
+    return cell_neighbours
 
 
 def nextgen(gen):
@@ -80,9 +80,9 @@ def nextgen(gen):
 # -------- Main Program Loop -----------
 while not done:
     if not started:
-        for event in pygame.event.get(): # User did something
-            if event.type == pygame.QUIT: # If user clicked close
-                done = True # Flag that we are done so we exit this loop
+        for event in pygame.event.get():    # User did something
+            if event.type == pygame.QUIT:    # If user clicked close
+                done = True     # Flag that we are done so we exit this loop
             if event.type == pygame.MOUSEBUTTONDOWN:
                 # User clicks the mouse. Get the position
                 pos = pygame.mouse.get_pos()
@@ -135,7 +135,7 @@ while not done:
             color = white
             if grid[row][column] == 1:
                 if started:
-                     color = green
+                    color = green
                 else:
                     color = red        
             pygame.draw.rect(screen, color, [(margin+width)*column+margin, (margin+height)*row+margin, width, height])
