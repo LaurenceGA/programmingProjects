@@ -8,10 +8,12 @@ def draw_snowman(screen, x, y):
     pygame.draw.ellipse(screen, white, [23+x, 20+y, 50, 50])
     pygame.draw.ellipse(screen, white, [0+x, 65+y, 100, 100])
 
+
 def draw_snowman2(screen, x, y, s):
     pygame.draw.ellipse(screen, white, [35*s+x, 0*s+y, 25*s, 25*s])
     pygame.draw.ellipse(screen, white, [23*s+x, 20*s+y, 50*s, 50*s])
     pygame.draw.ellipse(screen, white, [0*s+x, 65*s+y, 100*s, 100*s])
+
 
 def draw_snowmen(screen, x, y):
     if x + 100 < size[0]:

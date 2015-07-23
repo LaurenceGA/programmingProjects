@@ -3,7 +3,7 @@ __author__ = 'Laurence Armstrong'
 authorship_string = "{} created on {} by {} ({})\n{}\n".format(
     "spring.py", "15/07/15", __author__, 15062061, "-----" * 15) \
     if __name__ == '__main__' else ""
-print(authorship_string, end="")
+print authorship_string,
 
 import pygame
 

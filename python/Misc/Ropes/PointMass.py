@@ -3,7 +3,7 @@ __author__ = 'Laurence Armstrong'
 authorship_string = "{} created on {} by {} ({})\n{}\n".format(
     "PointMass.py", "15/07/15", __author__, 15062061, "-----" * 15) \
     if __name__ == '__main__' else ""
-print(authorship_string, end="")
+print authorship_string,
 
 import constants
 from vector import Vector
@@ -65,7 +65,7 @@ class PointMass():
     def draw(self, screen):
         m_pos = pygame.mouse.get_pos()
         if (m_pos[0] - self.pos.x)**2 + (m_pos[1] - self.pos.y)**2 < (self.mass*30)**2:
-            pygame.draw.circle(screen, self.colour, (round(self.pos.x), round(self.pos.y)), round(self.mass*10))
+            pygame.draw.circle(screen, self.colour, (int(round(self.pos.x)), int(round(self.pos.y))), int(round(self.mass*10)))
 
         # Force and velocity vectors
         # Force

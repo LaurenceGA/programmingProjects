@@ -23,13 +23,13 @@ for row in range(30):
         grid[row].append(0)     # Append a cell
  
 # Set row 0, cell 0 to one. (Remember rows and
-# column numbers start at zero.)
+# column numbers start at zero)
 grid[0][0] = 1
 
 # Initialize pygame
 pygame.init()
-  
 # Set the height and width of the screen
+
 size = [362, 362]
 screen = pygame.display.set_mode(size)
  

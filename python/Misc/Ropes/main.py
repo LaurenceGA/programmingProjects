@@ -3,7 +3,7 @@ __author__ = 'Laurence Armstrong'
 authorship_string = "{} created on {} by {} ({})\n{}\n".format(
     "main.py", "15/07/15", __author__, 15062061, "-----" * 15) \
     if __name__ == '__main__' else ""
-print(authorship_string, end="")
+print authorship_string,
 
 import pygame
 import os
@@ -36,8 +36,8 @@ clock = pygame.time.Clock()
 
 
 instances = [
-    Rope(400, 100, 500, 15, 0.1),
-    Rope(800, 100, 500, 15, 0.1)
+    Rope(200, 50, 300, 15, 0.1),
+    Rope(400, 50, 300, 15, 0.1)
 ]
 
 # -------- Main Program Loop -----------
