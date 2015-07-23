@@ -60,12 +60,35 @@ def neighbours(target_row, target_column):
     return cell_neighbours
 
 
+def neighbours_cyclic(target_row, target_column):
+    cell_neighbours = []
+    # Board is now cyclical
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i != 0 or j != 0:  # Can't be a neighbour with itself
+                r = target_row + i
+                c = target_column + j
+                if r < 0:
+                    r = len(grid[0])-1
+                elif r > len(grid[0])-1:
+                    r = 0
+                if c < 0:
+                    c = len(grid)-1
+                elif c > len(grid)-1:
+                    c = 0
+
+                cell_neighbours.append((r, c))
+
+    return cell_neighbours
+
+
 def nextgen(gen):
     cell_neighbours = []
     new_gen = []
     # Map neighbours
     for cell in gen:
-        cell_neighbours.append(neighbours(cell[0], cell[1]))
+        cell_neighbours.append(neighbours(cell[0], cell[1]))    # This for a finite board
+        # cell_neighbours.append(neighbours_cyclic(cell[0], cell[1]))   # This for a cyclic board
 
     all_neighbours = [cell for cells in cell_neighbours for cell in cells]  # One big list
 

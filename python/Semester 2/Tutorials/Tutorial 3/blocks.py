@@ -10,7 +10,7 @@ import pygame
 def draw_stack(screen, x, y, height):
     if height > 0:
         draw_block(screen, x, y)
-        draw_stack(screen, x, y - 26, height - 1)   # 26 to make each one visible
+        draw_stack(screen, x, y - 28, height - 1)   # over 25 to make each one visible
 
 ##############################################################################################        
       
