@@ -24,7 +24,7 @@ camel_name = random.choice(("Dave",
                             "John",
                             "Anne",
                             "Lisa"
-))
+                            ))
 
 # Introduction
 print "Welcome to Camel!"
@@ -47,7 +47,7 @@ def offer_choice():
 
 
 def show_status(miles, drinks, natives):
-    print "\nYou and {} have traveled: {}miles".format(camel_name, miles)
+    print "\nYou and {} have traveled: {} miles".format(camel_name, miles)
     print "Drinks in canteen: {}".format(drinks)
     print "The natives are {} miles behind you, but seem to be getting closer\n".format(natives)
 
@@ -168,7 +168,9 @@ while not done:
                 natives_distance += random.randint(4, 20)
                 print "The traveler leaps at you and you fall from your camel." \
                       " The last thing you remember is the rabid whites of their eyes"
-                print "You wake up dazed and confused, not knowing what time it is."
+                print "You wake up dazed with {} licking at your face," \
+                      " you don't know how long you were gone".format(camel_name)
+                print "Nothing appears to be stolen and the traveler is gone\n"
             else:
                 print "{} a generous one who gives you some water\n".format(random.choice(("He's", "She's")))
                 canteen_drinks += random.randint(1, 2)
