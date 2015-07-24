@@ -5,10 +5,10 @@ authorship_string = "{} created on {} by {} ({})\n{}\n".format(
     if __name__ == '__main__' else ""
 print authorship_string,
 
+import pygame
+
 import constants
 from vector import Vector
-
-import pygame
 
 
 class PointMass():
