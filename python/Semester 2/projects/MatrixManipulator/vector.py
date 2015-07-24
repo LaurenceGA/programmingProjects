@@ -7,7 +7,7 @@ authorship_string = "{} created on {} by {} ({})\n{}\n".format(
 stdout.write(authorship_string)
 
 
-class Vector:
+class Vector(object):
     # Initialize vector
     def __init__(self, *elements):
         self.elements = list(elements)
@@ -66,8 +66,10 @@ class Vector:
         """
         Defines v * const as v.scale(const) where const is int or float
         """
-        if type(other) == int or float:
+        if type(other) == (int or float):
             return self.scale(other)
+        elif type(other) == Vector:
+            return self.dot(other)
         else:
             return NotImplemented
 
@@ -75,7 +77,7 @@ class Vector:
         """
         defines const * v as v.scale(const) where const is int or float
         """
-        if type(other) == int or float:
+        if type(other) == (int or float):
             return self.scale(other)
         else:
             return NotImplemented
@@ -115,11 +117,14 @@ class Vector:
         """
         Return the dot product of two vectors
         """
-        return (self.x * vec2.x) + (self.y * vec2.y)
+        if len(vec2) != len(self):
+            raise DifferentLengthVectors(self, vec2)
+
+        return sum([self[i]*vec2[i] for i in range(len(self))])
 
     def len(self):
         """
-        Return the length of the vector
+        Return the length of the vector. Not # of elements
         """
         return (self.dot(self))**0.5
 
@@ -134,7 +139,7 @@ class Vector:
         """
         Return the distance to another vector
         """
-        return self.subtract(vec2).len()
+        return (self - vec2).len()
 
     def angle(self, vec2):
         """
@@ -143,6 +148,17 @@ class Vector:
         """
         from math import acos
         return acos(self.dot(vec2) / (self.len() * vec2.len()))
+
+    def cross(self, vec2):
+        """
+        Return the cross product of two vectors
+        """
+        if (len(self) or len(vec2)) != 3:
+            raise Exception("Incorrect vector lengths. Must be two 3 length vectors.")
+
+        return Vector(self[1]*vec2[2] - self[2]*vec2[1],
+                      self[2]*vec2[0] - self[0]*vec2[2],
+                      self[0]*vec2[1] - self[1]*vec2[0])
 
 
 class DifferentLengthVectors(Exception):
