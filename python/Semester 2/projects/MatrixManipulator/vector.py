@@ -26,6 +26,7 @@ class Vector(object):
         Access next item
         """
         if self.index == len(self.elements):
+            self.index = 0
             raise StopIteration
 
         self.index += 1
@@ -49,6 +50,12 @@ class Vector(object):
         Indexing. v[i] returns index at i
         """
         return self.elements[item]
+
+    def __setitem__(self, key, value):
+        """
+        Set v[key] = value
+        """
+        self.elements[key] = value
 
     def __add__(self, other):
         """
@@ -93,6 +100,9 @@ class Vector(object):
         """
         Add two vectors together
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         if len(vec2) != len(self):
             raise DifferentLengthVectors(self, vec2)
 
@@ -102,6 +112,9 @@ class Vector(object):
         """
         Subtract one vector from this one
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         if len(vec2) != len(self):
             raise DifferentLengthVectors(self, vec2)
 
@@ -117,6 +130,9 @@ class Vector(object):
         """
         Return the dot product of two vectors
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         if len(vec2) != len(self):
             raise DifferentLengthVectors(self, vec2)
 
@@ -139,6 +155,9 @@ class Vector(object):
         """
         Return the distance to another vector
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         return (self - vec2).len()
 
     def angle(self, vec2):
@@ -146,6 +165,9 @@ class Vector(object):
         Return angle between two vectors in radians
         return math.Acos(v1.Dot(v2) / (v1.Len() * v2.Len()))
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         from math import acos
         return acos(self.dot(vec2) / (self.len() * vec2.len()))
 
@@ -153,6 +175,9 @@ class Vector(object):
         """
         Return the cross product of two vectors
         """
+        if type(vec2) != Vector:
+            raise TypeError("Not a vector")
+
         if (len(self) or len(vec2)) != 3:
             raise Exception("Incorrect vector lengths. Must be two 3 length vectors.")
 
