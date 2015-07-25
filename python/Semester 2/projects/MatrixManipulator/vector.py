@@ -19,6 +19,7 @@ class Vector(object):
         """
         Make the vector iterable
         """
+        self.index = 0
         return self
 
     def next(self):
@@ -26,7 +27,6 @@ class Vector(object):
         Access next item
         """
         if self.index == len(self.elements):
-            self.index = 0
             raise StopIteration
 
         self.index += 1

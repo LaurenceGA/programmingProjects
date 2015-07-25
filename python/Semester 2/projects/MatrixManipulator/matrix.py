@@ -26,6 +26,7 @@ class Matrix(object):
         """
         Make the matrix iterable
         """
+        self.index = 0
         return self
 
     def next(self):
@@ -33,7 +34,6 @@ class Matrix(object):
         Access next item
         """
         if self.index == len(self.elements):
-            self.index = 0
             raise StopIteration
 
         self.index += 1
@@ -297,12 +297,15 @@ class Matrix(object):
                     if row == 0:
                         break
 
-                    if not self[row]:
-                        return
+                    # if not self[row]:
+                    #     return
 
                     if row-1 >= 0:
                         if self[row-1][cur_col] == 0:
                             break
+                        if cur_col >= 1:
+                            if self[row-1][cur_col-1] != 0:
+                                break
 
                     self.row_scale(row-1, 1 / float(self[row-1][cur_col]))
 
@@ -318,7 +321,6 @@ class Matrix(object):
 
     """
     TODO
-    RREF
     invert (2x2, 1/(ad - bc) * (d -b, -c a)) detA = 0 = not invertible
     Determinant of > 2x2
     co-factor expansion
