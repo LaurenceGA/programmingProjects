@@ -87,7 +87,7 @@ class Matrix(object):
         """
         Defines A * const as A.scale(const) where const is int or float
         """
-        if type(other) == (int or float):
+        if type(other) == int or type(other) == float:
             return self.scale(other)
         elif type(other) == Matrix:
             return self.multiply(other)
@@ -100,7 +100,7 @@ class Matrix(object):
         """
         defines const * A as A.scale(const) where const is int or float
         """
-        if type(other) == (int or float):
+        if type(other) == int or type(other) == float:
             return self.scale(other)
         elif type(other) == Vector:
             return self.multiply(Matrix(other).transpose())
@@ -250,6 +250,22 @@ class Matrix(object):
             return
         self[i], self[j] = self[j], self[i]
 
+    def invert(self):
+        """
+        Return the inverted version of a matrix
+        invert (2x2, 1/(ad - bc) * (d -b, -c a)) detA = 0 = not invertible
+        """
+        if self.row_num() != self.col_num():
+            raise NotSquareError("Matrix must be square to invert")
+
+        det = self.determinant()
+
+        if det == 0:    # Would be divided by 0
+            raise ZeroDivisionError("Matrix is not invertible")
+
+        if len(self) == 2:
+            return Matrix((self[1][1], -self[0][1]), (-self[1][0], self[0][0])).scale(1 / det)
+
     def echelon(self):
         # Order it as much as possible first
         cur_row = 0
@@ -321,9 +337,8 @@ class Matrix(object):
 
     """
     TODO
-    invert (2x2, 1/(ad - bc) * (d -b, -c a)) detA = 0 = not invertible
-    Determinant of > 2x2
-    co-factor expansion
+    invert of > 2x2
+    Determinant of > 2x2 (co-factor expansion)
     """
 
 

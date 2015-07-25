@@ -23,8 +23,8 @@ f = Matrix((1, 2), (3, 4))
 g = Matrix((0, 0, 0, 0), (0, 0, 1, 5), (3, 0, 1, 1))
 h = Matrix((0, 0, 0), (0, 1, 5), (3, 1, 1))
 
-m = a
+m = f
 
 print m
-m.rref()
+m = m.invert()
 print m
