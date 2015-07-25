@@ -73,7 +73,8 @@ class Vector(object):
         """
         Defines v * const as v.scale(const) where const is int or float
         """
-        if type(other) == (int or float):
+        # print other
+        if type(other) == int or type(other) == float:
             return self.scale(other)
         elif type(other) == Vector:
             return self.dot(other)
@@ -84,10 +85,19 @@ class Vector(object):
         """
         defines const * v as v.scale(const) where const is int or float
         """
-        if type(other) == (int or float):
+        if type(other) == int or type(other) == float:
             return self.scale(other)
         else:
             return NotImplemented
+
+    def __neg__(self):
+        return self.scale(-1)
+
+    def __nonzero__(self):
+        for e in self:
+            if e != 0:
+                return True
+        return False
 
     # VECTOR MANIPULATION FUNCTIONS
     def reset(self):

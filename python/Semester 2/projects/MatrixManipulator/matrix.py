@@ -47,7 +47,12 @@ class Matrix(object):
         to_string = "["
         for e in self.elements:
             for i in e:
-                to_string += str(i) + ' '
+                if int(i) == i:
+                    i = str(int(i))
+                else:
+                    i = "{:.2f}".format(i)
+
+                to_string += i + ' '
             to_string += '\n '
         to_string = to_string[:-3] + ']'
         return to_string
@@ -101,6 +106,9 @@ class Matrix(object):
             return self.multiply(Matrix(other).transpose())
         else:
             return NotImplemented
+
+    def __neg__(self):
+        return self * -1
 
     # MATRIX MANIPULATION FUNCTIONS
     def reset(self):
@@ -205,25 +213,129 @@ class Matrix(object):
 
         return Matrix(*m_list)
 
+    def determinant(self):
+        """
+        Find the determinant of the matrix
+        """
+        if self.row_num() != self.col_num():
+            raise NotSquareError("The matrix must be square to find the determinant")
+
+        if len(self) == 2:
+            # ad - bc
+            return self[0][0]*self[1][1] - self[1][0]*self[0][1]
+        else:
+            return -1
+
+    # Elementary row operations
+    def row_add(self, i, j, scale=1):
+        """
+        Add row i to j
+        """
+        self[j] += self[i] * scale
+
+    def row_scale(self, i, const):
+        """
+        Scale row i by const
+        """
+        if i >= len(self):
+            raise DimensionError("Row does not exist")
+
+        self[i] = self[i].scale(const)
+
+    def row_switch(self, i, j):
+        """
+        Switch row i with row j
+        """
+        if i == j:
+            return
+        self[i], self[j] = self[j], self[i]
+
+    def echelon(self):
+        # Order it as much as possible first
+        cur_row = 0
+        cur_col = 0
+        while cur_row < len(self):
+            if cur_col >= len(self[0]):
+                break
+            for row in range(cur_row, len(self)):   # Go down columns
+                if self[row][cur_col] != 0:
+                    self.row_switch(cur_row, row)
+
+                    # Make everything below 0
+                    for r in range(row + 1, len(self)):
+                        # self.row_add(row, r, -(self[row][cur_col]) * self[r][cur_col])
+                        self.row_add(row, r, -(self[r][cur_col] / self[row][cur_col]))
+
+                    cur_row += 1
+                    # cur_col += 1
+
+                    break
+            cur_col += 1
+
+    def rref(self):
+        self.echelon()
+        cur_row = 0
+        cur_col = 0
+        while cur_row < len(self):
+            if cur_col >= len(self[0]):
+                break
+            for row in range(cur_row, len(self)+1):   # Go down columns
+                if row == len(self):
+                    if self[row-1][cur_col-1] == 0:
+                        self.row_scale(row-1, 1/float(self[row-1][cur_col]))
+
+                        if row-2 >= 0:
+                            for r in range(row-2, -1, -1):
+                                self.row_add(row-1, row-2, -(self[row-2][cur_col]))
+
+                        cur_row += 1
+
+                        break
+                    else:
+                        break
+                if self[row][cur_col] == 0:
+                    if row == 0:
+                        break
+
+                    if not self[row]:
+                        return
+
+                    if row-1 >= 0:
+                        if self[row-1][cur_col] == 0:
+                            break
+
+                    self.row_scale(row-1, 1 / float(self[row-1][cur_col]))
+
+                    if row-2 >= 0:
+                        for r in range(row-2, -1, -1):
+                            self.row_add(row-1, r, -(self[row-2][cur_col]))
+
+                    cur_row += 1
+
+                    break
+
+            cur_col += 1
+
     """
     TODO
-    echelon
     RREF
-    Row operations
-        -Add
-        -Scale
-        -Move
     invert (2x2, 1/(ad - bc) * (d -b, -c a)) detA = 0 = not invertible
-    Determinant
+    Determinant of > 2x2
     co-factor expansion
     """
 
 
 class DimensionError(Exception):
+    def __init__(self, value):
+        self. value = value
+
     def __str__(self):
-        return "Incorrect matrix dimensions"
+        return "Incorrect matrix dimensions{}".format("; {}".format(self.value))
 
 
 class NotSquareError(DimensionError):
+    def __init__(self, value):
+        self. value = value
+
     def __str__(self):
-        return "The matrix is not square"
+        return "The matrix is not square{}".format("; {}".format(self.value))
