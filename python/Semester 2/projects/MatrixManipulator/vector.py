@@ -10,9 +10,12 @@ stdout.write(authorship_string)
 class Vector(object):
     # Initialize vector
     def __init__(self, *elements):
+        if len(elements) == 1 or not elements:
+            raise Exception("Vector must have more than one element")
+
         self.elements = list(elements)
 
-        self.index = 0      # Iteration index start
+        # self.index = 0      # Iteration index start
 
     # FOLLOWING FUNCTION DEFINE BUILT IN OPERATIONS ON VECTORS
     def __iter__(self):
@@ -20,18 +23,18 @@ class Vector(object):
         Make the vector iterable
         """
         self.index = 0
-        return self
+        return iter(self.elements)
 
-    def next(self):
-        """
-        Access next item
-        """
-        if self.index == len(self.elements):
-            raise StopIteration
-
-        self.index += 1
-
-        return self.elements[self.index - 1]
+    # def next(self):
+    #     """
+    #     Access next item
+    #     """
+    #     if self.index == len(self.elements):
+    #         raise StopIteration
+    #
+    #     self.index += 1
+    #
+    #     return self.elements[self.index - 1]
 
     def __str__(self):
         """
@@ -111,6 +114,38 @@ class Vector(object):
         """
         del self.elements[key]
 
+    def __delslice__(self, i, j):
+        self.elements.__delslice__(i, j)
+
+    def __eq__(self, other):
+        """
+        Determine whether this vector is equal to another
+        """
+        if not isinstance(other, Vector):
+            return False
+        elif len(self) != len(other):
+            return False
+        else:
+            for i, element in enumerate(self):
+                if element != other[i]:
+                    return False
+        return True
+
+    def __abs__(self):
+        """
+        abs(v) gives it's magnitude
+        """
+        return self.magnitude()
+
+    def __div__(self, other):
+        """
+        Define v / const
+        """
+        if isinstance(other, (int, float)):
+            return self * (1 / other)
+        else:
+            raise TypeError("Cannot divide vector by {}".format(other))
+
     # VECTOR MANIPULATION FUNCTIONS
     def reset(self):
         """
@@ -160,7 +195,7 @@ class Vector(object):
 
         return sum([self[i]*vec2[i] for i in range(len(self))])
 
-    def len(self):
+    def magnitude(self):
         """
         Return the length of the vector. Not # of elements
         """
@@ -170,7 +205,7 @@ class Vector(object):
         """
         Return the unit vector
         """
-        l = 1 / self.len()
+        l = 1 / self.magnitude()
         return self.scale(l)
 
     def dist(self, vec2):
@@ -180,18 +215,18 @@ class Vector(object):
         if type(vec2) != Vector:
             raise TypeError("Not a vector")
 
-        return (self - vec2).len()
+        return (self - vec2).magnitude()
 
     def angle(self, vec2):
         """
         Return angle between two vectors in radians
-        return math.Acos(v1.Dot(v2) / (v1.Len() * v2.Len()))
+        return math.acos(v1.dot(v2) / (v1.magnitude() * v2.magnitude()))
         """
         if type(vec2) != Vector:
             raise TypeError("Not a vector")
 
         from math import acos
-        return acos(self.dot(vec2) / (self.len() * vec2.len()))
+        return acos(self.dot(vec2) / (self.magnitude() * vec2.magnitude()))
 
     def cross(self, vec2):
         """
@@ -207,6 +242,11 @@ class Vector(object):
                       self[2]*vec2[0] - self[0]*vec2[2],
                       self[0]*vec2[1] - self[1]*vec2[0])
 
+    def append(self, value):
+        self.elements.append(value)
+
+    def extend(self, value):
+        self.elements.extend(value)
 
 class DifferentLengthVectors(Exception):
     def __init__(self, vec1, vec2):

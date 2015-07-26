@@ -12,33 +12,37 @@ from vector import Vector
 class Matrix(object):
     # Initialize matrix
     def __init__(self, *elements):
+        if not elements:
+            raise DimensionError("Dimensions cannot be zero")
+
         self.elements = []
+
         vec_len = len(elements[0])
         for element in elements:
             if len(element) != vec_len:
-                raise DimensionError("Matrix cannot be created")
+                raise DimensionError("Matrix components not of consistent length")
             self.elements.append(Vector(*element))
 
-        self.index = 0  # Iteration start index
+        # self.index = 0  # Iteration start index
 
     # FOLLOWING FUNCTION DEFINE BUILT IN OPERATIONS ON MATRICIES
     def __iter__(self):
         """
         Make the matrix iterable
         """
-        self.index = 0
-        return self
+        # self.index = 0
+        return iter(self.elements)
 
-    def next(self):
-        """
-        Access next item
-        """
-        if self.index == len(self.elements):
-            raise StopIteration
-
-        self.index += 1
-
-        return self.elements[self.index - 1]
+    # def next(self):
+    #     """
+    #     Access next item
+    #     """
+    #     if self.index == len(self.elements):
+    #         raise StopIteration
+    #
+    #     self.index += 1
+    #
+    #     return self.elements[self.index - 1]
 
     def __str__(self):
         """
@@ -47,7 +51,7 @@ class Matrix(object):
         to_string = "["
         for e in self.elements:
             for i in e:
-                if int(i) == i:
+                if round(i) == i:
                     i = str(int(i))
                 else:
                     i = "{:.2f}".format(i)
@@ -87,11 +91,11 @@ class Matrix(object):
         """
         Defines A * const as A.scale(const) where const is int or float
         """
-        if type(other) == int or type(other) == float:
+        if isinstance(other, (int, float)):
             return self.scale(other)
-        elif type(other) == Matrix:
+        elif isinstance(other, Matrix):
             return self.multiply(other)
-        elif type(other) == Vector:
+        elif isinstance(other, Vector):
             return self.multiply(Matrix(other).transpose())
         else:
             return NotImplemented
@@ -100,12 +104,21 @@ class Matrix(object):
         """
         defines const * A as A.scale(const) where const is int or float
         """
-        if type(other) == int or type(other) == float:
+        if isinstance(other, (int, float)):
             return self.scale(other)
-        elif type(other) == Vector:
+        elif isinstance(other, Vector):
             return self.multiply(Matrix(other).transpose())
         else:
             return NotImplemented
+
+    def __div__(self, other):
+        """
+        Define A / const
+        """
+        if isinstance(other, (int, float)):
+            return self * (1 / other)
+        else:
+            raise TypeError("Cannot divide vector by {}".format(other))
 
     def __nonzero__(self):
         """
@@ -127,6 +140,20 @@ class Matrix(object):
         Define item deletion to delete from elements
         """
         del self.elements[key]
+
+    def __eq__(self, other):
+        """
+        Determine whether A and B are equal
+        """
+        if not isinstance(other, Vector):
+            return False
+        elif self.row_num() != other.row_num() or self.col_num() != other.col_num():
+            return False
+        else:
+            for i, row in enumerate(self):
+                if row != other[i]:
+                    return False
+        return True
 
     # MATRIX MANIPULATION FUNCTIONS
     def reset(self):
@@ -333,11 +360,22 @@ class Matrix(object):
         if det == 0:    # Would be divided by 0
             raise ZeroDivisionError("Matrix is not invertible")
 
-        if len(self) == 2:
-            return Matrix((self[1][1], -self[0][1]), (-self[1][0], self[0][0])).scale(1 / det)
+        # rref(A|I) = (I|A)
+        # Add identity onto the end of the matrix
+        original_length = len(self[0])
+        new_matrix = Matrix(*self)
+        for i, row in enumerate(new_matrix):
+            row.extend([1 if j == i else 0 for j in range(original_length)])
+
+        new_matrix.rref()
+
+        # Remove identity from the front to obtain A-1
+        for row in new_matrix:
+            del row[:original_length]
+
+        return new_matrix
 
     def echelon(self):
-        # Order it as much as possible first
         cur_row = 0
         cur_col = 0
         while cur_row < len(self):
@@ -349,8 +387,9 @@ class Matrix(object):
 
                     # Make everything below 0
                     for r in range(row + 1, len(self)):
-                        # self.row_add(row, r, -(self[row][cur_col]) * self[r][cur_col])
-                        self.row_add(row, r, -(self[r][cur_col] / self[row][cur_col]))
+                        if self[r][cur_col] == 0:   # Already 0
+                            continue
+                        self.row_add(row, r, -(self[r][cur_col] / float(self[row][cur_col])))
 
                     cur_row += 1
                     # cur_col += 1
@@ -368,11 +407,11 @@ class Matrix(object):
             for row in range(cur_row, len(self)+1):   # Go down columns
                 if row == len(self):
                     if self[row-1][cur_col-1] == 0:
-                        self.row_scale(row-1, 1/float(self[row-1][cur_col]))
+                        self.row_scale(row-1, 1 / float(self[row-1][cur_col]))
 
                         if row-2 >= 0:
                             for r in range(row-2, -1, -1):
-                                self.row_add(row-1, row-2, -(self[row-2][cur_col]))
+                                self.row_add(row-1, r, -(self[r][cur_col]))
 
                         cur_row += 1
 
@@ -397,15 +436,13 @@ class Matrix(object):
 
                     if row-2 >= 0:
                         for r in range(row-2, -1, -1):
-                            self.row_add(row-1, r, -(self[row-2][cur_col]))
+                            self.row_add(row-1, r, -(self[r][cur_col]))
 
                     cur_row += 1
 
                     break
 
             cur_col += 1
-
-    # TODO invert of > 2x2
 
 
 class DimensionError(Exception):

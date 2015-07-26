@@ -23,8 +23,19 @@ f = Matrix((1, 2), (3, 4))
 g = Matrix((8, 0, 0, 0), (0, 0, 1, 5), (3, 0, 1, 1), (5, 10, 0, 2))
 h = Matrix((0, 0, 0), (0, 1, 5), (3, 1, 1))
 i = Matrix((0, 0, 0), (0, 0, 0), (0, 0, 0))
+j = Matrix((5, 8, 3, 4, 0),
+           (5, 9, 4, 4, 8),
+           (4, 11, 15, 4, 7),
+           (1, 0, 0, 4, 3),
+           (6, 4, 12, 0, 1))
 
-m = g
+m = f
 
 print m
-print m.determinant()
+print
+# m.rref()
+# print m
+n = m.invert()
+print n
+print
+print n * m
