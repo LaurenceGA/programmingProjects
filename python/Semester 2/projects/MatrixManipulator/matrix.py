@@ -140,6 +140,9 @@ class Matrix(object):
             self[i] = Vector(*[1 if i == j else 0 for j in range(len(self))])
 
     def transpose(self):
+        """
+        Transpose the current matrix, swapping columns with rows
+        """
         m_list = []
         for i in range(self.col_num()):
             v_list = []
@@ -212,6 +215,9 @@ class Matrix(object):
         return Matrix(*m_list)
 
     def multiply(self, b):
+        """
+        Multiply the current matrix by matrix b
+        """
         if type(b) != Matrix:
             raise TypeError("Not a matrix")
 
@@ -399,10 +405,7 @@ class Matrix(object):
 
             cur_col += 1
 
-    """
-    TODO
-    invert of > 2x2
-    """
+    # TODO invert of > 2x2
 
 
 class DimensionError(Exception):
