@@ -91,13 +91,25 @@ class Vector(object):
             return NotImplemented
 
     def __neg__(self):
+        """
+        Define -v to give negative vector
+        """
         return self.scale(-1)
 
     def __nonzero__(self):
+        """
+        Define a zero vector to be one of all zeros
+        """
         for e in self:
             if e != 0:
                 return True
         return False
+
+    def __delitem__(self, key):
+        """
+        Define item deletion to delete from elements
+        """
+        del self.elements[key]
 
     # VECTOR MANIPULATION FUNCTIONS
     def reset(self):

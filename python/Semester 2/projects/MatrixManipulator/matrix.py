@@ -107,8 +107,26 @@ class Matrix(object):
         else:
             return NotImplemented
 
+    def __nonzero__(self):
+        """
+        Define a zero matrix to be one of all zeros
+        """
+        for r in self:
+            if r:
+                return True
+        return False
+
     def __neg__(self):
+        """
+        Define -A to give negative matrix
+        """
         return self * -1
+
+    def __delitem__(self, key):
+        """
+        Define item deletion to delete from elements
+        """
+        del self.elements[key]
 
     # MATRIX MANIPULATION FUNCTIONS
     def reset(self):
@@ -222,9 +240,56 @@ class Matrix(object):
 
         if len(self) == 2:
             # ad - bc
+            # print self[0][0]*self[1][1] - self[1][0]*self[0][1]
             return self[0][0]*self[1][1] - self[1][0]*self[0][1]
         else:
-            return -1
+            # Co-factor expansion
+            det = 0
+            for i, row in enumerate(self):
+                det += (-1)**(i+1) * row[0] * self.matrix_exclude(i, 0).determinant()
+
+            return det
+
+    def matrix_exclude(self, row=None, col=None):
+        """
+        Return a matrix with 'row' excluded and 'column' excluded
+        """
+        if row >= self.row_num():
+            raise DimensionError("Row does not exist")
+
+        if col >= self.col_num():
+            raise DimensionError("Column does not exist")
+
+        import copy
+
+        new_matrix = copy.deepcopy(self)
+
+        if row is not None:
+            new_matrix.remove_row(row)
+
+        if col is not None:
+            new_matrix.remove_col(col)
+
+        return new_matrix
+
+    def remove_row(self, i):
+        """
+        Remove a given row, i
+        """
+        if i >= self.row_num():
+            raise DimensionError("Row does not exist")
+
+        del self[i]
+
+    def remove_col(self, i):
+        """
+        Remove a given column, i
+        """
+        if i >= self.col_num():
+            raise DimensionError("Column does not exist")
+
+        for row in self:
+            del row[i]
 
     # Elementary row operations
     def row_add(self, i, j, scale=1):
@@ -253,7 +318,6 @@ class Matrix(object):
     def invert(self):
         """
         Return the inverted version of a matrix
-        invert (2x2, 1/(ad - bc) * (d -b, -c a)) detA = 0 = not invertible
         """
         if self.row_num() != self.col_num():
             raise NotSquareError("Matrix must be square to invert")
@@ -338,7 +402,6 @@ class Matrix(object):
     """
     TODO
     invert of > 2x2
-    Determinant of > 2x2 (co-factor expansion)
     """
 
 
