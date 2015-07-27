@@ -146,6 +146,56 @@ class Vector(object):
         else:
             raise TypeError("Cannot divide vector by {}".format(other))
 
+    # Helper functions to make it easier to work with
+    # Act as both getter and setter methods depending on the arguments
+    def x(self, value=None):
+        """
+        Represents the first element of a vector
+        If a value is given, x will be set to that
+        """
+        if isinstance(value, (int, float)):
+            self[0] = value
+        else:
+            if value is not None:
+                raise TypeError("Cannot be set to {}".format(type(value)))
+            return self[0]
+
+    def y(self, value=None):
+        """
+        Represents the second element of a vector
+        If a value is given, y will be set to that
+        """
+        if isinstance(value, (int, float)):
+            self[1] = value
+        else:
+            if value is not None:
+                raise TypeError("Cannot be set to {}".format(type(value)))
+            return self[1]
+
+    def z(self, value=None):
+        """
+        Represents the third element of a vector
+        If a value is given, z will be set to that
+        """
+        if isinstance(value, (int, float)):
+            self[2] = value
+        else:
+            if value is not None:
+                raise TypeError("Cannot be set to {}".format(type(value)))
+            return self[2]
+
+    def w(self, value=None):
+        """
+        Represents the fourth element of a vector
+        If a value is given, w will be set to that
+        """
+        if isinstance(value, (int, float)):
+            self[3] = value
+        else:
+            if value is not None:
+                raise TypeError("Cannot be set to {}".format(type(value)))
+            return self[3]
+
     # VECTOR MANIPULATION FUNCTIONS
     def reset(self):
         """

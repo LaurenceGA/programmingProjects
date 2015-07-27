@@ -31,10 +31,11 @@ j = Matrix((5, 8, 3, 4, 0),
 
 m = j
 
-print m
-print
+print v
+# print m
+# print
 # m.rref()
-print m.determinant()
+# print m.determinant()
 # n = m.invert()
 # print n
 # print
