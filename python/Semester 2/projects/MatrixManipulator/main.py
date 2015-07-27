@@ -29,9 +29,9 @@ j = Matrix((5, 8, 3, 4, 0),
            (1, 0, 0, 4, 3),
            (6, 4, 12, 0, 1))
 
-m = j
+m = d
 
-print v
+print m.determinant()
 # print m
 # print
 # m.rref()

@@ -334,6 +334,7 @@ class Matrix(object):
         """
         Scale row i by const
         """
+        # Should probably be removed (unnecessary)
         if i >= len(self):
             raise DimensionError("Row does not exist")
 
