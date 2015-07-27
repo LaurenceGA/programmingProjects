@@ -292,6 +292,8 @@ class Vector(object):
                       self[2]*vec2[0] - self[0]*vec2[2],
                       self[0]*vec2[1] - self[1]*vec2[0])
 
+    # TODO vector projection?
+
     def append(self, value):
         self.elements.append(value)
 
