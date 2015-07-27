@@ -14,7 +14,7 @@ import fish as fish
 from constants import *
 
 
-class Game():
+class Game:
     spawn_time = 1000
     spawn_timer = 0
 
