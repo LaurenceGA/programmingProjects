@@ -273,13 +273,12 @@ class Matrix(object):
 
         if len(self) == 2:
             # ad - bc
-            # print self[0][0]*self[1][1] - self[1][0]*self[0][1]
             return self[0][0]*self[1][1] - self[1][0]*self[0][1]
         else:
             # Co-factor expansion
             det = 0
             for i, row in enumerate(self):
-                det += (-1)**(i+1) * row[0] * self.matrix_exclude(i, 0).determinant()
+                det += (-1)**i * row[0] * self.matrix_exclude(i, 0).determinant()
 
             return det
 
@@ -399,6 +398,7 @@ class Matrix(object):
 
     def rref(self):
         self.echelon()
+
         cur_row = 0
         cur_col = 0
         while cur_row < len(self):

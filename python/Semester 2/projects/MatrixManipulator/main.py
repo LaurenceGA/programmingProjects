@@ -29,13 +29,13 @@ j = Matrix((5, 8, 3, 4, 0),
            (1, 0, 0, 4, 3),
            (6, 4, 12, 0, 1))
 
-m = f
+m = j
 
 print m
 print
 # m.rref()
-# print m
-n = m.invert()
-print n
-print
-print n * m
+print m.determinant()
+# n = m.invert()
+# print n
+# print
+# print n * m
