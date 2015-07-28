@@ -1,3 +1,6 @@
 [submodule "python/uni_colab"]
 	path = python/uni_colab
 	url = git@github.com:LaurenceGA/uni_colab.git
+[submodule "python/Semester 2/projects/py-MatrixManipulator"]
+	path = python/Semester 2/projects/py-MatrixManipulator
+	url = git@github.com:LaurenceGA/py-MatrixManipulator.git
