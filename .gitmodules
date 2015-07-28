@@ -1,0 +1,3 @@
+[submodule "python/uni_colab"]
+	path = python/uni_colab
+	url = git@github.com:LaurenceGA/uni_colab.git
