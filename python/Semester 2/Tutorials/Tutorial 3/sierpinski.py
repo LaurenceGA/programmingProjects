@@ -11,7 +11,7 @@ def draw_triangle(screen, x, y, size):
 
 def sierpinski(screen, x, y, size):
     # draw_triangle(screen, x, y, size)
-    if size > 2:
+    if size > 64:
         pygame.draw.polygon(screen, black, [[x, y], [x+size*2, y], [x, y-size*2]])
 
         draw_triangle(screen, x, y, size)
