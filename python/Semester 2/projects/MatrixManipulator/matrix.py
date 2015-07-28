@@ -217,7 +217,7 @@ class Matrix(object):
             raise TypeError("Not a matrix")
 
         if self.row_num() != b.row_num() or self.col_num() != b.col_num():
-            raise DimensionError
+            raise DimensionError("Matrices must have the same dimensions")
 
         m_list = []
         for v in range(len(self)):

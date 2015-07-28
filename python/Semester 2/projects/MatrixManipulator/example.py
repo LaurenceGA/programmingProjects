@@ -14,6 +14,13 @@ u = Vector(0, 1, 2, 3, 4)
 w = Vector(-1, -2, -3, -4, -5)
 z = Vector(1, 2)
 
+print v + u
+print
+print v.dot(u)
+print
+print u.angle(w)
+print
+
 a = Matrix((1, 2, 3), (2, 3, 4))
 b = Matrix((0, 1, 2), (1, 2, 3))
 c = -a
@@ -29,13 +36,16 @@ j = Matrix((5, 8, 3, 4, 0),
            (1, 0, 0, 4, 3),
            (6, 4, 12, 0, 1))
 
-m = j
-
-print m
+print g
+g.rref()
 print
-# m.rref()
-print m.determinant()
-# n = m.invert()
-# print n
-# print
-# print n * m
+print g
+print
+
+print j.invert()
+print
+
+print e * a
+print
+
+print a + b
