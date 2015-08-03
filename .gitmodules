@@ -4,3 +4,6 @@
 [submodule "python/Semester 2/projects/linalg"]
 	path = python/Semester 2/projects/linalg
 	url = git@github.com:LaurenceGA/linalg.git
+[submodule "python/Semester 2/projects/3Dim/linalg"]
+	path = python/Semester 2/projects/3Dim/linalg
+	url = git@github.com:LaurenceGA/linalg.git
