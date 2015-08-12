@@ -1,0 +1,25 @@
+Laurence Armstrong - 15062061
+Game of Life
+
+HOW THE ALGORITHM WORKS
+The algorithm works such that it finds the surrounding coordinates of every living cell, that is every cell that is a neighbour to a living one.
+
+This function works by using for loops to build a list of surrounding coordinates.
+CConditional expressions to make sure the coordinates don't go off the board.
+
+The neighbours_cyclic function does the same thing but instead of using conditional expressions to avoid improper indexing,
+it loops the invalid indexes around to the other side of the board.
+
+Back in the nextgen function this list of lists of tuples is converted into one big list of tuples using list comprehension.
+It then loops through a version of the list that has been cast to a set to remove any duplicates.
+This increases efficiency as cells aren't checked unnecessarily.
+
+The rules of the game of life are then used to construct the list of next gen cells.
+
+SHAPE EXPERIMENTATION
+Shapes found from wikipedia such as the blinker, glider and the cross and the outcomes were as detailed.
+
+BOARD TYPE EXPERIMENTATION
+The basic neighbours function written produces a finite board in which the edges of the screen acted like walls of death which would mostly kill cells.
+The neighbours_cyclic version loops the board around which meant that shapes were allowed to get much larger.
+Problems could arise though where come shapes looped around and killed shapes on the other side of the board.

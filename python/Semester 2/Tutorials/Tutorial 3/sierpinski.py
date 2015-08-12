@@ -1,5 +1,6 @@
 import pygame
- 
+
+
 # a function that will draw a right-angled triangle of a given size anchored at a given location
 def draw_triangle(screen, x, y, size):
     pygame.draw.polygon(screen, white, [[x, y], [x+size, y], [x, y-size]])
@@ -11,7 +12,7 @@ def draw_triangle(screen, x, y, size):
 
 def sierpinski(screen, x, y, size):
     # draw_triangle(screen, x, y, size)
-    if size > 64:
+    if size > 1:
         pygame.draw.polygon(screen, black, [[x, y], [x+size*2, y], [x, y-size*2]])
 
         draw_triangle(screen, x, y, size)
@@ -36,6 +37,7 @@ white = [255, 255, 255]
 blue = [0, 0, 255]
 green = [0, 255, 0]
 red = [255, 0, 0]
+grey = [127, 127, 127]
 
 # Set the height and width of the screen
 size = [512, 512]
@@ -44,7 +46,6 @@ screen = pygame.display.set_mode(size)
 # Loop until the user clicks the close button.
 done = False
 clock = pygame.time.Clock()
- 
  
 while not done:
  
@@ -58,9 +59,8 @@ while not done:
  
     # Clear the screen and set the screen background
     screen.fill(black)
-     
-    # Draw Sierpinski's triangle at a given size anchored at a given location
 
+    # Draw Sierpinski's triangle at a given size anchored at a given location
     sierpinski(screen, 0, 512, 512)
 
     # Go ahead and update the screen with what we've drawn.
