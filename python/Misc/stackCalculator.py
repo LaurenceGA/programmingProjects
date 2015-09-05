@@ -17,17 +17,39 @@ def eval_postfix(stack, expr):
     token_list = split("([^0-9])", expr)
 
     for token in token_list:
+        # Commutative operands
         if token in ["", " "]:
             continue
         if token == "+":
             sum = stack.pop() + stack.pop()
             stack.push(sum)
-        elif token == "*":
+        elif token == "*" or token.lower() == 'x':
             product = stack.pop() * stack.pop()
             stack.push(product)
+        # Non-commutative operands
+        elif token == "-":
+            oper1 = stack.pop()
+            oper2 = stack.pop()
+            diff = oper2 - oper1
+            stack.push(diff)
+        elif token == "/":
+            oper1 = stack.pop()
+            oper2 = stack.pop()
+            div = oper2 / float(oper1)
+            stack.push(div)
+        elif token == '^':
+            oper1 = stack.pop()
+            oper2 = stack.pop()
+            expon = oper2**oper1
+            stack.push(expon)
         else:
-            stack.push(int(token))
+            stack.push(float(token))
 
-    return stack.pop()
+    result = stack.pop()
+
+    if not stack.is_empty():
+        raise ValueError("Too many input values")
+
+    return result
 
 print(eval_postfix(compute_stack, input("Enter postfix expression\n>>>")))
