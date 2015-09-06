@@ -11,18 +11,12 @@ def draw_triangle(screen, x, y, size):
 # currently only one triangle is drawn
 
 def sierpinski(screen, x, y, size):
-    # draw_triangle(screen, x, y, size)
-    if size > 1:
-        pygame.draw.polygon(screen, black, [[x, y], [x+size*2, y], [x, y-size*2]])
-
-        draw_triangle(screen, x, y, size)
+    if size > 4:    # Base case
         sierpinski(screen, x, y, size*0.5)
 
-        draw_triangle(screen, x, y - size, size)
-        sierpinski(screen, x, y - size, size*0.5)
+        sierpinski(screen, x, y - size*0.5, size*0.5)
 
-        draw_triangle(screen, x + size, y, size)
-        sierpinski(screen, x + size, y, size*0.5)
+        sierpinski(screen, x + size*0.5, y, size*0.5)
     else:
         draw_triangle(screen, x, y, size)
         
@@ -46,7 +40,7 @@ screen = pygame.display.set_mode(size)
 # Loop until the user clicks the close button.
 done = False
 clock = pygame.time.Clock()
- 
+
 while not done:
  
     # This limits the while loop to a max of 10 times per second.

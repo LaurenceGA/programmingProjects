@@ -1,0 +1,13 @@
+Laurence Armstrong - 15062061
+
+Experimentation done:
+
+Blocks:
+Having a slight gap between the blocks allows for them to be seen clearly.
+
+Snowmen:
+Looks best when it shrinks until infinitely small and goes most of the way across the screen.
+
+Sierpinski:
+Works for all different sizes and locations, drawing is consistent with parameters given.
+Looks great when draw_triangle method is altered such that the colour argument is a random colour.

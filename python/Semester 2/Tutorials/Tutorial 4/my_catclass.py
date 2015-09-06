@@ -17,7 +17,9 @@ class caterpillar:
         self.face_ycoord = 250
         self.body = segment_queue()
         self.food = food_list()
-        self.wellbeing = 0
+        
+        # Growing the caterpillar may mess up with stat
+        self.wellbeing = 0      # How the caterpillar is feeling
 
         td = random.randrange(0, 2)
         if td == 0:
@@ -26,50 +28,45 @@ class caterpillar:
             self.travel_direction = 'right'
            
     def grow(self):
-        if self.travel_direction == 'left':
-            td = 0
-        else:
-            td = 1
+        """
+        td is a modifier used to modify the calculation
+        td = 0 for left and td = 1 for right
+        """
+        td = 0 if self.travel_direction == 'left' else 1
 
-        if td == 1:     # Right
-            if self.body.length <= 0:
-                xpos = self.face_xcoord - 35
-            else:
-                xpos = self.face_xcoord - 35 - 35*self.body.length
-        else:           # Left
-            if self.body.length <= 0:
-                xpos = self.face_xcoord + 40
-            else:
-                xpos = self.face_xcoord + 40 + 35*self.body.length
+        if self.body.length == 0:
+            # 35 only taken away if traveling right, 40 added only if traveling left
+            xpos = self.face_xcoord - 35*td - (td-1)*40
+        else:
+            # 35 * body length (plus initial segment) only if traveling right
+            # 40 + 35 * body length only added if traveling right
+            xpos = self.face_xcoord - (35*(self.body.length+1)*td) - (td-1)*(40 + 35*self.body.length)
 
         self.body.addSegment(xpos, self.face_ycoord)
 
     def reverse(self):
         # Reverse travel direction
-        if self.travel_direction == 'left':
-            td = 1
-            self.travel_direction = 'right'
-        else:
-            td = -1
-            self.travel_direction = 'left'
+        td = 1 if self.travel_direction == 'left' else -1
+        # Swap left/right
+        self.travel_direction = 'left' if self.travel_direction == 'right' else 'right'
 
+        # Reverse body
         self.body.reverse_queue()
 
+        # Put head where it needs to be
         self.face_xcoord += td * (40 + self.body.length*35)
     
     def move_forward(self):
         if self.body.isEmpty():
             return
-        if self.travel_direction == 'left':
-            td = -1
-        else:
-            td = 1
 
-        if self.face_xcoord % 10 == 0:
-            self.drop_food()
+        # To reduce calculation repetitions
+        td = -1 if self.travel_direction == 'left' else 1
 
         if 0 <= self.face_xcoord <= 960:    # 1000 (screen width) - 40 (face width)
-            self.face_xcoord += 2*td
+            self.face_xcoord += 2*td    # + or - depending on direction
+
+            # Traverse body and add to xcoord
             cur_seg = self.body.head
             while cur_seg is not None:
                 cur_seg.xcoord += 2*td
@@ -77,11 +74,11 @@ class caterpillar:
 
             # Eat food
             # Traverse list
-            td = 0 if td == -1 else -1
+            # td = 0 if td == -1 else -1
             current_food = self.food.head
             previous_food = None
             while current_food is not None:
-                if abs(current_food.xcoord - self.face_xcoord + 40*td) <= 5:
+                if abs(current_food.xcoord - self.face_xcoord - 12) <= 5:  # -12 so food eaten under caterpillar's mouth
                     # Eat the food
                     if current_food.foodtype == 'nice':
                         self.wellbeing += 1
@@ -90,6 +87,7 @@ class caterpillar:
                         self.wellbeing -= 1
                         self.shrink_back()
 
+                    # Remove the food item
                     if previous_food is not None:
                         previous_food.next = current_food.next
                     else:
@@ -103,19 +101,19 @@ class caterpillar:
             self.reverse()
 
     def shrink_back(self):
-        if self.travel_direction == 'left':
-            td = -1
-        else:
-            td = 1
+
+        td = -1 if self.travel_direction == 'left' else 1
 
         self.body.remove_first()
         self.face_xcoord -= 35*td
-                
+
     def drop_food(self):
+        # Should be done with random.choice, but done as brief said to instead
         if random.randrange(0, 2) == 0:
             food_type = 'nice'
         else:
             food_type = 'nasty'
+
         self.food.addItem(random.randrange(0, 980), self.face_ycoord + 35, food_type)
         
     def draw_caterpillar(self, screen):
@@ -168,13 +166,13 @@ class segment_queue:
         return self.length == 0
       
     def addSegment(self, x, y): 
-        segment = body_segment(x, y)
-        segment.next = None
+        segment = body_segment(x, y)    # Create our new segment
 
         # If the list is empty the new one becomes the first and last
         if self.length == 0:
             self.head = self.last = segment
         else:
+            # Otherwise stick on end
             last = self.last
             last.next = segment
             self.last = segment
@@ -183,12 +181,13 @@ class segment_queue:
     
     def reverse_queue(self):
         b = None
-        t = self.head
-        while t is not None:
-            a = t.next
-            t.next = b
-            b = t
-            t = a
+        temp = self.head
+        while temp is not None:
+            a = temp.next
+            temp.next = b
+            b = temp
+            temp = a
+        # Clean up
         self.last = self.head
         self.head = b
 

@@ -15,9 +15,14 @@ def draw_snowmen(screen, x, y):      # No size change, until edge of screen
 
 
 def draw_snowmen2(screen, x, y, s):     # Size change, until too small
-    if s > 0.001:     # Snowman is too small
-        draw_snowman(screen, x, y, s)
+    if s < 0.00051:
+        return
+    else:
         draw_snowmen2(screen, x + 100*s, y, s*0.9)
+    draw_snowman(screen, x, y, s)
+    # if s > 0.001:     # Snowman is too small
+    #     draw_snowman(screen, x, y, s)
+    #     draw_snowmen2(screen, x + 100*s, y, s*0.9)
 
 # Initialize the game engine
 pygame.init()

@@ -16,9 +16,6 @@ for line in file:
 
 file.close()
 
-# for line in names_list:r
-#     print line
-
 
 def binary_search(the_list, lower, upper, item):
     item = item.lower()
@@ -57,11 +54,6 @@ def names_beginning(the_list, char):
 
         if i >= len(the_list):
             break
-    # for name in the_list:
-    #     if name[0].lower() == char:
-    #         print name
-
-# names_beginning(names_list, 'H')
 
 
 def insertion_sort(the_list):
@@ -75,12 +67,37 @@ def insertion_sort(the_list):
 
         # Move down list to find insertion position
         while j >= 0 and len(the_list[j]) > len(name):
-            the_list = the_list[:j] + [the_list[j+1]] + the_list[j+1:]
-            j -= - 1
+            j -= 1
 
-        the_list = the_list[:j] + [name] + the_list[j+1:]
+        the_list.insert(j+1, the_list.pop(i))   # Grab the current item and put into position
 
-insertion_sort(names_list)
 
-for name in names_list:
-    print name
+def selection_sort(the_list):
+    for i in range(len(the_list)):
+        min_pos = i
+
+        # Scan to right
+        for j in range(i+1, len(the_list)):
+            if len(the_list[j]) < len(the_list[min_pos]):
+                min_pos = j
+
+        # Swap values
+        the_list[i], the_list[min_pos] = the_list[min_pos], the_list[i]
+
+def quick_sort(the_list):
+    pass
+
+def sort_by_length(names):
+    from time import clock
+    start = clock()
+    # selection_sort(names)
+    # insertion_sort(names)
+    quick_sort(names)
+    print clock() - start
+
+# names_beginning(names_list, 'H')
+sort_by_length(names_list)
+
+# for name in names_list:
+#     print name
+
