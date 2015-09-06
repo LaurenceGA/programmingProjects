@@ -17,7 +17,7 @@ class caterpillar:
         self.face_ycoord = 250
         self.body = segment_queue()
         self.food = food_list()
-        
+
         # Growing the caterpillar may mess up with stat
         self.wellbeing = 0      # How the caterpillar is feeling
 
