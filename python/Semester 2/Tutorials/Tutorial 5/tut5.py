@@ -84,8 +84,31 @@ def selection_sort(the_list):
         # Swap values
         the_list[i], the_list[min_pos] = the_list[min_pos], the_list[i]
 
-def quick_sort(the_list):
-    pass
+
+def partition(the_list, bottom, top):
+    pivot = len(the_list[bottom])
+
+    h = bottom
+    for k in range(h+1, top+1):
+        if len(the_list[k]) < pivot:
+            h += 1
+            the_list[h], the_list[k] = the_list[k], the_list[h]
+
+    the_list[bottom], the_list[h] = the_list[h], the_list[bottom]
+    return h
+
+
+def quick_sort(the_list, bottom=None, top=None):
+    bottom = 0 if bottom is None else bottom
+    top = len(the_list)-1 if top is None else top
+
+    if bottom < top:
+        split = partition(the_list, bottom, top)
+
+        quick_sort(the_list, bottom, split-1)
+        quick_sort(the_list, split+1, top)
+    else:
+        return
 
 def sort_by_length(names):
     from time import clock
