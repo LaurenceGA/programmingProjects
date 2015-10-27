@@ -1,9 +1,9 @@
-CPPFLAGS=-Wall -g -std=c++11
+CPPFLAGS=-Wall -g -std=c++14
 CXX=g++
 RM=rm -f
 
-SRCS=permute.cpp
-NAME=permute
+SRCS=main.cpp extree.cpp token.cpp
+NAME=expressions
 
 all:
 	$(CXX) $(CPPFLAGS) $(SRCS) -o $(NAME)

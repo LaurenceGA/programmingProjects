@@ -49,46 +49,47 @@ int main(int argc, char *argv[]) {
 		}
 	
 		if (upperLimit < lowerLimit) {
-			// Exception here
-			throw "Upper limit can't be less than lower limit";
+			cerr << "Upper limit can't be less than lower limit" << endl;
+			return 1;
 		}
 		
 		if (!reversed) {
 			if (lowerLimit < -273.15) {
-				throw "Lower limit cannot below absolute zero";
+				cerr << "Lower limit cannot below absolute zero" << endl;
+				return 1;
 			}
-		} else {
-			if (lowerLimit < -459.67) {
-				throw "Lower limit cannot be below absolute zero";
-			}
+		} else if (lowerLimit < -459.67) {
+			cerr << "Lower limit cannot be below absolute zero" << endl;
+			return 1;
 		}
 
 		if (stepSize == 0) {
-			throw "Step size must be greater than 0";	
+			cerr << "Step size must be greater than 0" << endl;
+			return 1;
 		}
 
-	int t_size = (upperLimit - lowerLimit) / stepSize;
-	vector<pair<float, float> > tempTable(t_size);
-	
-	for (int i=0; i < t_size; i++) {
-		tempTable[i].first = lowerLimit + i*stepSize;
-		if (!reversed) {
-			tempTable[i].second = celToFah(lowerLimit + i*stepSize);
-		} else {
-			tempTable[i].second = fahToCel(lowerLimit + i*stepSize);
+		int t_size = (upperLimit - lowerLimit) / stepSize;
+		vector<pair<float, float> > tempTable(t_size);
+		
+		for (int i=0; i < t_size; i++) {
+			tempTable[i].first = lowerLimit + i*stepSize;
+			if (!reversed) {
+				tempTable[i].second = celToFah(lowerLimit + i*stepSize);
+			} else {
+				tempTable[i].second = fahToCel(lowerLimit + i*stepSize);
+			}
 		}
-	}
 
-	string heading = "Celcius        Fahrenheit";
+		string heading = "Celcius		Fahrenheit";
 	
-	if (reversed) {
-		heading = "Fahrenheit        Celcius";
-	}
+		if (reversed) {
+			heading = "Fahrenheit		Celcius";
+		}
 
-	cout << heading << endl;
-	for (int i=0; i < t_size; i++) {
-		cout << tempTable[i].first << "	" << tempTable[i].second << endl;
-	}
+		cout << heading << endl;
+		for (int i=0; i < t_size; i++) {
+			cout << tempTable[i].first << "		" << tempTable[i].second << endl;
+		}
 
 	}
 

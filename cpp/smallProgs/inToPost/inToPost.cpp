@@ -84,7 +84,7 @@ int main() {
 
 	cout << "Please enter an in-fix expression: " << endl;
 	
-	string expr;
+	strin expr;
 	getline(cin, expr);
 
 	Token_stream ts{expr};
@@ -104,6 +104,11 @@ int main() {
 					postfix << popped.kind << ' ';
 					popped = tokenStack.top();
 					tokenStack.pop();
+
+					if (tokenStack.empty()) {
+						cerr << "Unequal brackets!" << endl;
+						return 1;
+					}
 				}
 			} else {
 				while((!tokenStack.empty()) &&
