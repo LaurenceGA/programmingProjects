@@ -52,17 +52,21 @@ exprTree::exprTree(std::unique_ptr<Token> t) {	// Creates a one node tree
 }
 
 exprTree::exprTree(std::unique_ptr<Token> t, exprTree *l, exprTree *r) {
-	root = new Node(std::move(t), l->root, r->root);
+	root = new Node(std::move(t),
+			l == nullptr ? nullptr : l->root,
+			r == nullptr ? nullptr : r->root);
 }	
 
 exprTree::exprTree(TokenStream &ts) {
 	root = nullptr;
 	if (ts.frm == infix) {
 		std::stack<std::unique_ptr<Token> > postEqn = inToPost(ts);
-		//while(!postEqn.empty()) {
-		//	std::cout << postEqn.top()->kind << std::endl;
-		//	postEqn.pop();
-		//}
+		root = treeFromPost(postEqn);
+	} else if (ts.frm == prefix) {
+		auto preEqn = getStack(ts);
+		root = buildPre(preEqn)->root;
+	} else if (ts.frm == postfix) {
+		auto postEqn = getStack(ts);
 		root = treeFromPost(postEqn);
 	}
 }
@@ -100,6 +104,28 @@ Node* exprTree::treeFromPost(std::stack<std::unique_ptr<Token> > &postEqn) {
 	return n;
 }
 
+exprTree* exprTree::buildPre(std::stack<std::unique_ptr<Token> > &preEqn) {
+	if (preEqn.empty()) {
+		std::cerr << "Malformed equation" << std::endl;
+		return nullptr;
+	} else {
+		std::unique_ptr<Token> t = std::move(preEqn.top());
+		preEqn.pop();
+
+		if (t->kind == operand) {
+			exprTree *singleT = new exprTree(std::move(t));
+			return singleT;
+		} else if (t->kind == oprtor) {
+			auto left = buildPre(preEqn);
+			auto right = buildPre(preEqn);
+			return new exprTree(std::move(t), left, right);
+		} else {
+			std:: cerr << "Malformed equation" << std::endl;
+			return nullptr;
+		}
+	}
+}
+
 exprTree::~exprTree() {
 	destroyTree();
 }
@@ -123,6 +149,25 @@ static_unique_ptr_cast(std::unique_ptr<Base, Del>&& p)
 {
 	auto d = static_cast<Derived *>(p.release());
 	return std::unique_ptr<Derived, Del>(d, std::move(p.get_deleter()));
+}
+
+std::stack<std::unique_ptr<Token> > exprTree::getStack(TokenStream &ts) {
+	std::stack<std::unique_ptr<Token> > reverse;
+
+	while(!ts.empty()) {
+		std::unique_ptr<Token> t = ts.get();
+
+		reverse.push(std::move(t));
+	}
+
+	
+	std::stack<std::unique_ptr<Token> > returnStack;
+	while (!reverse.empty()) {
+		returnStack.push(std::move(reverse.top()));
+		reverse.pop();
+	}
+
+	return returnStack;
 }
 
 std::stack<std::unique_ptr<Token> > exprTree::inToPost(TokenStream &ts) {
@@ -166,32 +211,18 @@ std::stack<std::unique_ptr<Token> > exprTree::inToPost(TokenStream &ts) {
 				}
 			}
 		} else if (t->kind == oprtor) {
-			//Oprtor &o = static_cast<Oprtor&>(t);
 			auto temp = static_cast<Oprtor*>(t.release());
 			auto o = std::unique_ptr<Oprtor>(temp);
 
-			if (o->kind == negate) {
-				std::unique_ptr<Token> nextT = ts.get();
-				if (nextT->kind != operand) {
-					std::cerr << "Malformed euation" << std::endl;
-					throw "Nope";
-				} else {
-					auto temp = static_cast<Token*>(o.release());
-					auto thisT = std::unique_ptr<Token>(temp);
-					postEqn.push(std::move(thisT));
-					postEqn.push(std::move(nextT));
-				}
-			} else {
-				while(!workingStack.empty() &&
-						workingStack.top()->kind != bracket &&
-						(static_cast<Oprtor*>(workingStack.top().get()))->precedence >= o->precedence) {
+			while(!workingStack.empty() &&
+					workingStack.top()->kind != bracket &&
+					(static_cast<Oprtor*>(workingStack.top().get()))->precedence >= o->precedence) {
 
-					postEqn.push(std::move(workingStack.top()));
-					workingStack.pop();
-				}
-
-				workingStack.push(std::move(o));
+				postEqn.push(std::move(workingStack.top()));
+				workingStack.pop();
 			}
+
+			workingStack.push(std::move(o));
 		}
 	}
 

@@ -3,6 +3,7 @@
 #include <locale>
 #include <locale>
 #include <memory>
+#include <stdexcept>
 
 #include <iostream>	// To be romoved - only for testing
 
@@ -23,24 +24,15 @@ TokenStream::TokenStream(std::string s) {
 	stream.str(s);
 	getForm();
 	tokenize();
-	// Print the token stack for debugging purposes
-	//while (!tokens.empty()) {
-	//	std::cout << tokens.top().kind << ", ";
-	//	tokens.pop();
-	//}
 }
 
 std::unique_ptr<Token> TokenStream::get() {
 	if (!tokens.empty()) {
 		std::unique_ptr<Token> t = std::move(tokens.top());
-		//if (t.kind == bracket) {
-		//	Bracket &b = static_cast<Bracket&>(t);
-		//	std::cout << b.typ << std::endl;
-		//}
 		tokens.pop();
 		return t;
 	} else {
-		throw "Empty";
+		throw std::runtime_error("Accessing empty token stream");
 	}
 }
 
@@ -49,7 +41,7 @@ bool TokenStream::empty() {
 }
 
 void TokenStream::getForm() {
-	frm = infix;
+	frm = prefix;
 }
 
 void TokenStream::tokenize() {
@@ -71,35 +63,38 @@ void TokenStream::tokenize() {
 				break;
 			case '+': case '-':
 				if (frm == infix) {
-					// If the equation is infx then these tokens are only unary if they previous token is an operator
+					// If the equation is infx then these tokens are only unary if the previous token is an operator
 					if (workingStack.empty() || workingStack.top()->kind == oprtor) {
-						// Unary
-						if (ch == '-')	// We don't worry about +
-							workingStack.push(std::make_unique<Oprtor>(negate));
-
 						double val;
 						stream >> val;
+						
+						if (ch == '-') {
+							val = -val;
+						}
+
 						workingStack.push(std::make_unique<Number>(val));
 					} else {
 						workingStack.push(std::make_unique<Oprtor>(ch));
 					}
 				} else  { // It's either pre or post fix
 					std::locale loc;
-					if (isspace(stream.str()[int(stream.tellg())+1], loc)) {
+					if (isspace(stream.str()[int(stream.tellg())], loc)) {
 						workingStack.push(std::make_unique<Oprtor>(ch));
 					} else {
 						// Unary
-						if (ch == '-')	// We don't worry about +
-							workingStack.push(std::make_unique<Oprtor>(negate));
-
 						double val;
 						stream >> val;
+
+						if (ch == '-') {
+							val = -val;
+						}
+
 						workingStack.push(std::make_unique<Number>(val));
 					}
 				}
 				break;
 			default:
-				throw "error here";
+				throw std::runtime_error("Invalid tokens");
 		}
 	}
 	// Once it's all on the stack we want to reverse it so it's in a propper order

@@ -19,8 +19,6 @@ enum eqnForm {
 	postfix
 };
 
-const char negate = '_';
-
 class Token {
 	public:
 		Token();
