@@ -65,36 +65,52 @@ int main() {
 		iss >> word;
 		std::string lword = lowercase(word);		// Case insensitive		
 
-		if (lword == "q" || lword == "quit") {running = false;} else
-		if (lword == "help" || lword == "?") {
+		if (lword == "q" || lword == "quit") {
+			running = false;
+			std::cout << "Goodbye" << std::endl;
+		} else if (lword == "help" || lword == "?") {
 			showHelp();
-		} else
-		if (lword == "solve") {/*SOLVE*/} else
-		if (lword == "infix") {
+		} else if (lword == "solve") {
+			/*SOLVE*/
+		} else if (lword == "infix") {
 			/*INFIX*/
-			workingExpr->printTree(infix);
-			std::cout << std::endl;
-		} else
-		if (lword == "prefix") {
-			/*PREFIX*/
-			workingExpr->printTree(prefix);
-			std::cout << std::endl;
-		} else
-		if (lword == "postfix") {
-			/*POSTFIX*/
-			workingExpr->printTree(postfix);
-			std::cout << std::endl;
-		}
-		else {
-			iss.seekg(0);
-			TokenStream ts {iss.str()};
-
-			// Clearn up when we're done
 			if (workingExpr != nullptr) {
-				delete workingExpr;
+				std::cout << "infix: ";
+				workingExpr->printTree(infix);
+				std::cout << std::endl;
 			}
+		} else if (lword == "prefix") {
+			/*PREFIX*/
+			if (workingExpr != nullptr) {
+				std::cout << "prefix: ";
+				workingExpr->printTree(prefix);
+				std::cout << std::endl;
+			}
+		} else if (lword == "postfix") {
+			/*POSTFIX*/
+			if (workingExpr != nullptr) {
+				std::cout << "postfix: ";
+				workingExpr->printTree(postfix);
+				std::cout << std::endl;
+			}
+		} else if (lword == "") {
+			//std::cerr << "Invalid command" << std::endl;
+			//std::cout << "Command can't be empty" << std::endl;
+		} else {
+			iss.seekg(0);
+			try {
+				TokenStream ts {iss.str()};
+				std::cout << "Working with: " << iss.str() << std::endl;
 
-			workingExpr = new exprTree(ts);
+				// Clearn up when we're done
+				if (workingExpr != nullptr) {
+					delete workingExpr;
+				}
+
+				workingExpr = new exprTree(ts);
+			} catch (std::runtime_error) {
+				std::cerr << "Command invalid" << std::endl;
+			}
 		}
 	}
 

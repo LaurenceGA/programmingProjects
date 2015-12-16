@@ -87,10 +87,10 @@ if __name__ == '__main__':
 
     # Part 1
     editedText = stripChars(text)
-    # print(editedText)
+    print(editedText)
 
     # Part 2
-    displayStats(editedText)
+    # displayStats(editedText)
 
     # Bonus Question
     cipherText = readFile('pythonwiki_cipher.txt')

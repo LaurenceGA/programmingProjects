@@ -37,8 +37,12 @@ class exprTree {
 		
 		// Make a tree from a postfix notation
 		Node* treeFromPost(std::stack<std::unique_ptr<Token> > &postEqn);
+		// Make a tree from a prefix notation
+		//Node* treeFromPre(std::stack<std::unique_ptr<Token> > &preEqn);
+		exprTree* buildPre(std::stack<std::unique_ptr<Token> > &preEqn);
 		// Arrange infix tokens into postfix
 		std::stack<std::unique_ptr<Token> > inToPost(TokenStream &ts);
+		std::stack<std::unique_ptr<Token> > getStack(TokenStream &ts);
 		void destroyTree(Node *leaf);
 
 };

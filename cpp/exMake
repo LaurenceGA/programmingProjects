@@ -1,12 +1,15 @@
-CPPFLAGS=-Wall -g -std=c++11
+CPPFLAGS=-Wall -g -std=c++14
 CXX=g++
 RM=rm -f
 
-SRCS=permute.cpp
-NAME=permute
+SRCS=source.cpp
+NAME=name
 
 all:
 	$(CXX) $(CPPFLAGS) $(SRCS) -o $(NAME)
 
 clean:
 	$(RM) $(NAME)
+
+sense:
+	echo 42

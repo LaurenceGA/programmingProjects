@@ -1,0 +1,18 @@
+CC=g++
+CFLAGS=-c -Wall -std=c++14
+LDFLAGS=
+SOURCES=main.cpp token.cpp extree.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=expressions
+RM=rm -f
+
+all: $(SOURCES) $(EXECUTABLE)
+    
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	$(RM) $(OBJECTS) $(EXECUTABLE)

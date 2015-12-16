@@ -1,0 +1,19 @@
+1+2
+postfix
+
+1 + 2
+1
+-
+++
+5(3)
+150- --3
+
+5 - -3
+prefix
+1+2*5
+postfix
+(1+2)*(3*(4+5))
+prefix
+infix
+postfix
+q
