@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <math.h>
+
+// Value stack will be implemented as a linked list
+typedef struct NumStack NumStack;
+
+struct NumStack {
+	double val;
+	NumStack *next;
+};
+
+NumStack *newStack(double x);
+NumStack *push(NumStack *list, NumStack *value);
+NumStack *pop(NumStack *list, double *var);		// Load into var
+void freeStack(NumStack *list);
+
+// For growable arrays
+#define INIT_SIZE 1
+#define GROW 2	// Ammount to grow by
+
+/* A calculator that takes a post fix expression and evaluates it */
+int main(int argc, char *argv[]) {
+	/* If no argument is given, then expression input is from stdin, otherwise from arguments */
+	char **tokenArray = argv;
+	char **inpArray = malloc(sizeof(char *) * INIT_SIZE);
+	bool fromInp = false;
+
+	if (argc == 1) {
+		fromInp = true;
+
+
+
+		tokenArray = inpArray;
+	}
+
+	double v1, v2; 
+	NumStack *valStack = NULL;
+
+	while (--argc > 0) {
+		char *token = *++tokenArray;	// Grab the token
+		if (strlen(token) == 1 && ispunct(*token)) {	// If it's an operator
+			switch (*token) {
+				case '+':
+					valStack = pop(valStack, &v1);
+					valStack = pop(valStack, &v2);
+					valStack = push(valStack, newStack(v1 + v2));
+				break;
+
+				case '-':
+					valStack = pop(valStack, &v1);
+					valStack = pop(valStack, &v2);
+					valStack = push(valStack, newStack(v2 - v1));
+				break;
+
+				case '*':
+					valStack = pop(valStack, &v1);
+					valStack = pop(valStack, &v2);
+					valStack = push(valStack, newStack(v1 * v2));
+				break;
+
+				case '/':
+					valStack = pop(valStack, &v1);
+					valStack = pop(valStack, &v2);
+					valStack = push(valStack, newStack(v2 / v1));
+				break;
+
+				case '^':
+					valStack = pop(valStack, &v1);
+					valStack = pop(valStack, &v2);
+					valStack = push(valStack, newStack(pow(v1, v2)));
+				break;
+
+				default:
+					fprintf(stderr, "Unknown token %c", *token);
+				break;
+			}
+		} else {	// Must be a number
+			valStack = push(valStack, newStack(atof(token)));
+		}
+	}
+
+	double finalVal;
+	valStack = pop(valStack, &finalVal);
+
+	if (valStack != NULL) {
+		fprintf(stderr, "%s\n\n%s\n", "Bad input!",
+				"Put whitespace between arguments.\nEscape '*'.");
+		return 1;
+	}
+
+	printf("%.2f\n", finalVal);
+
+	if (fromInp) {
+		
+	}
+	freeStack(valStack);
+
+	return 0;
+}
+
+NumStack * newStack(double x) {
+	NumStack *newStk;
+
+	newStk = (NumStack *) malloc(sizeof(NumStack));
+	newStk->val = x;
+	newStk->next = NULL;
+
+	return newStk;
+}
+
+NumStack *push(NumStack *list, NumStack *val) {
+	val->next = list;
+	return val;
+}
+
+NumStack *pop(NumStack *list, double *value) {
+	if (list == NULL) {
+		return NULL;
+	} else {
+		*value = list->val;
+		NumStack *p = list->next;
+		free(list);
+		return p;
+	}
+}
+
+void freeStack(NumStack *list) {
+	if (list != NULL) {
+		NumStack *next;
+
+		for ( ; list != NULL; list = next) {
+			next = list->next;
+			free(list);
+		}
+	}
+}
+

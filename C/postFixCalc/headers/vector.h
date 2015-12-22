@@ -1,25 +1,20 @@
-/* A resiable array. Specifically an array of strings array */
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#define INIT_SIZE 10
+#define INIT_SIZE 20
+#define GROW_FACTOR 2
 
-typedef struct {
+/* Defines a very simple growable array */
+typedef struct Vector Vector;
+
+struct Vector {
+	void **data;
 	int size;
 	int capacity;
-	char *data[];
-} Vector;
+};
 
-void vector_init(Vector *v);
-
-void vector_append(Vector *v, char *s);
-
-void vector_set(Vector *v, int ind, char *s);
-
-char *vector_get(Vector *v, int ind);
-
-void vector_expand(Vector *v);
-
-void vector_free(Vector *v);
+Vector *newVector();
+void append(Vector *v, void *item);
+void freeVector(Vector *v);
 
 #endif

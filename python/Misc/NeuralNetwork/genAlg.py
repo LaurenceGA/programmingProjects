@@ -10,6 +10,7 @@ stdout.write(authorship_string)
 from sim import Simulation, Fish
 import random
 
+
 class GenAlg(object):
     """
     Test

@@ -2,7 +2,7 @@ CC=gcc
 STD=c11
 CFLAGS=-c -Wall -std=$(STD) -lm
 LDFLAGS=-lm
-SOURCES=postcalc.c
+SOURCES=postcalc.c stack.c vector.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=pcalc
 RM=rm -f
