@@ -8,7 +8,7 @@
 #include "headers/stack.h"
 #include "headers/vector.h"
 
-#define BUFFSIZE 16
+#define BUFFINIT 1
 
 /* A calculator that takes a post fix expression and evaluates it */
 int main(int argc, char *argv[]) {
@@ -21,30 +21,41 @@ int main(int argc, char *argv[]) {
 	if (argc == 1) {
 		fromInp = true;
 		
-		char buff[BUFFSIZE];
-		while (scanf("%s", buff) != EOF) {
-			char *str = (char *) malloc(sizeof(char) * strlen(buff) + 1);
-			strcpy(str, buff);
-			append(inpVect, str);
-			if (scanf("*\n") != EOF) {
-				break;
+		printf("%s\n\n>", "Enter equation:");
+
+		char *buff = (char *) malloc(sizeof(char) * BUFFINIT + 1);
+		char c;
+		int buffInd = 0, buffsize = BUFFINIT;
+		while ((c = getchar()) != EOF) {
+			if (c == ' ' || c == '\n') {
+				buff[buffInd] = '\0';
+				buffInd = 0;
+				char *str = (char *) malloc(sizeof(char) * strlen(buff) + 1);
+				strcpy(str, buff);
+				append(inpVect, str);
+				if (c == '\n')
+					break;
+			} else {
+				if (buffInd > buffsize-1) {
+					buffsize *= 2;
+					buff = realloc(buff, sizeof(char) * buffsize + 1);
+				}
+				buff[buffInd++] = c;
 			}
 		}
 
 		tokenArray = (char **)inpVect->data;
-		counter = inpVect->size + 2;
+		counter = inpVect->size + 1;
+		free(buff);
 	}
 
 	double v1, v2;
 	NumStack *valStack = newStack();
-	
+
 	int ind = (fromInp) ? 0: 1;
 	while (--counter > 0) {
-		printf("\n%s\n", "HERE");
+		char *token = (tokenArray)[ind++];
 
-		//char *token = *++tokenArray;	// Grab the token
-		char *token = (tokenArray)[ind];
-		ind += 1;
 		if (strlen(token) == 1 && ispunct(*token)) {	// If it's an operator
 			switch (*token) {
 				case '+':
@@ -77,7 +88,7 @@ int main(int argc, char *argv[]) {
 				break;
 
 				default:
-					fprintf(stderr, "Unknown token %c", *token);
+					fprintf(stderr, "Unknown token %c\n", *token);
 				break;
 			}
 		} else {	// Must be a number
@@ -89,7 +100,7 @@ int main(int argc, char *argv[]) {
 
 	if (!isEmpty(valStack)) {
 		fprintf(stderr, "%s\n\n%s\n", "Bad input!",
-				"Put whitespace between arguments.\nEscape '*'.");
+				(!fromInp) ? "Put whitespace between arguments.\nEscape '*'." : "\n");
 		return 1;
 	}
 
