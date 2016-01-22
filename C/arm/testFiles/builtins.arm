@@ -1,0 +1,66 @@
+// Test out the built in functions and constants
+// Constants
+print PI				// 3.14...
+print E					// 2.71...
+print GAMMA				// 0.577...
+print PHI				// 1.618...
+print
+
+// Functions
+print sin(0)			// 0
+print sin(PI)			// 0
+print sin(PI/2)			// 1
+print sin(2*PI)			// 0
+print sin(3*PI/2)		// -1
+print 
+
+print asin(1)			// 1.57...
+print 
+
+print cos(0)			// 1
+print cos(PI)			// -1
+print cos(PI/2)			// 0
+print cos(2*PI)			// 1
+print cos(3*PI/2)		// 0
+print 
+
+print acos(-1)			// 3.14....
+print 
+
+print tan(0)			// 0
+print atan(1)			// 0.785
+print 
+
+print ln(1)				// 0
+print ln(2)				// 0.693...
+print 
+
+print log(2)			// 0.3010...
+print log(10)			// 1
+print 
+
+print sqrt(49)			// 7
+print sqrt(100)			// 10
+print 
+
+print abs(5)			// 5
+print abs(-5)			// 5
+print abs(0)			// 0
+print 
+
+print ceil(0.2)			// 1
+print ceil(1.5)			// 2
+print ceil(0.7)			// 1
+print 
+
+print floor(13.8)		// 13
+print floor(0.3)		// 0
+print 
+
+print round(0.1)		// 0
+print round(0.5)		// 1
+print round(0.8)		// 1
+print 
+
+print degtorad(90)		// 1.57
+print radtodeg(PI/2)	// 90

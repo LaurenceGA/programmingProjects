@@ -86,8 +86,12 @@ int main(int argc, char *argv[]) {
 	runcmd("/usr/bin/gcc", args);
 
 	if (removeTempC) {
-		char *rmargs[] = {"/bin/rm", "-f", tempName, NULL};
-		runcmd("/bin/rm", rmargs);
+		//char *rmargs[] = {"/bin/rm", "-f", tempName, NULL};
+		//runcmd("/bin/rm", rmargs);
+		int rem = remove(tempName);
+		if (rem != 0) {
+			fprintf(stderr, "Failed to remove temp file\n");
+		}
 	}
 
 	return 0;
