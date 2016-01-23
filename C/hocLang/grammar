@@ -1,8 +1,0 @@
-list:
-	(empty) |
-	expr \n |
-	list expr \n
-expr:
-	NUMBER |
-	expr (+|-|*|/) expr |
-	'(' expr ')'
