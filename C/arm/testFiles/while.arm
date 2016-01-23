@@ -5,10 +5,9 @@ while i < 10 {
 		continue
 	} else if i == 5 {
 		break
-		print 1000000
+		print 1000000, "\n"
 	}
-	print i
+	print i, "\n"
 	i = i + 1
 }
-print
-print i
+print "\n", i, "\n"

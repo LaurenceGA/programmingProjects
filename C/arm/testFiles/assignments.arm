@@ -11,3 +11,12 @@ print hello - 3		// 7
 
 hello = 2*a
 print hello			// 6
+
+a = "hello"			// Variable type reassignment
+b = "world"
+c = "\n"
+print a, b, c
+print c
+
+a = "hello "		// String reassignment
+print a, b, c
