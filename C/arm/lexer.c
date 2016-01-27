@@ -44,7 +44,11 @@ char *tokens[] = {
 	"CONTINUE",
 	"PRINT",
 	",",
-	"string"
+	"string",
+	"PRINTLN",
+	"FUNC",
+	"FUNCTION",
+	"RETNR"
 };
 
 
@@ -57,7 +61,7 @@ Lexer *newLexer(FILE *f) {
 	}
 
 	newLex->inpFile = f;
-	//newLex->buffFull = false;
+	newLex->line = 1;
 	newLex->buff = NULL;
 
 	return newLex;
@@ -138,6 +142,7 @@ Token_t getNextToken(Lexer *l, Lexval *val) {
 
 	switch (l->currentChar) {
 		case '\n':
+			l->line++;
 			return NL;
 
 		case EOF:

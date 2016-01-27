@@ -1,10 +1,14 @@
 #ifndef AST_H
 #define AST_H
 
-#include "symbol.h"
+//#include "symbol.h"
 #include "lexer.h"
 
+// Our types
 typedef enum nodeType nodeType;
+typedef struct astNode astNode;
+
+// AST NODE
 enum nodeType {
 	STATEMENT_nd,
 
@@ -43,10 +47,13 @@ enum nodeType {
 	CONTINUE_nd,
 
 	PRINT_nd,
-	ARG_nd		// Linked list, holds arg in it's left branch
+	ARG_nd,		// Linked list, holds arg in it's left branch
+
+	FUNCDEC_nd,
+	FNC_nd,
+	RETRN_nd
 };
 
-typedef struct astNode astNode;
 struct astNode {
 	nodeType type;
 	double value;	// For number nodes
@@ -68,9 +75,13 @@ astNode *numNode(double value);	// Just numbers
 astNode *varNode(Lexval *lval);
 astNode *strNode(Lexval *lval);
 
+Frame *callFunc(astNode *root);
+void refreshVars(astNode *root);
+
 void execute(astNode *root);
 void freeTree(astNode *root);
 
 void printTree(astNode *root, int level, bool nxt);	// Recursive print
 
 #endif
+

@@ -50,7 +50,10 @@ enum Token_t {
 	PRINT,		// print
 	COMMA,		// ,
 	STRING,
-	PRINTLN
+	PRINTLN,
+	FUNC,		// func keyword
+	FUNCTION,	// function name
+	RETRN
 };
 
 // For error message purposes
@@ -75,6 +78,7 @@ typedef struct Lexer Lexer;
 struct Lexer {
 	FILE *inpFile;
 	char currentChar;
+	int line;
 
 	TokenBuff *buff;
 };

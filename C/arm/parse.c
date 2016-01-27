@@ -6,15 +6,19 @@
 #include "headers/ast.h"
 
 void init();
+extern bool VARDUMP;
 
 bool parse(FILE *f) {
 	Lexer *lex = newLexer(f);
 	Lexval val;		// Stores extra info about token
 
+	createTable();	// Initializes the symbol table
 	init();	// Install consts into the symbol table
 	astNode *stmntList = StatementList(lex, &val, true);
+	if (VARDUMP) {
+		dumpMainVars();
+	}
 	freeTree(stmntList);
-
 	freeLexer(lex);
 
 	return true;
@@ -35,7 +39,7 @@ astNode *StatementList(Lexer *l, Lexval *val, bool exec) {
 
 			astNode *statement = Statement(l, val);
 			if ((tok = getNextToken(l, val)) != NL) {	// Statement ends in newline
-				syntaxError("newline", tokens[tok]);
+				syntaxError("newline", tokens[tok], l->line);
 			}
 
 			// Execute as we parse if told
@@ -67,6 +71,12 @@ astNode *Statement(Lexer *l, Lexval *val) {
 	} else if (tok == PRINT || tok == PRINTLN) {
 		unGetToken(l, val, tok);
 		return Print(l, val);
+	} else if (tok == FUNC) {
+		unGetToken(l, val, tok);
+		return FuncDec(l, val);
+	} else if (tok == RETRN) {
+		unGetToken(l, val, tok);
+		return Retrn(l, val);
 	} else if (tok == WHILE) {
 		unGetToken(l, val, tok);
 		return While(l, val);
@@ -79,7 +89,7 @@ astNode *Statement(Lexer *l, Lexval *val) {
 		if ((tok = getNextToken(l, val)) == RBRACE) {
 			return lst;
 		} else {
-			syntaxError("right brace (})", tokens[tok]);
+			syntaxError("right brace (})", tokens[tok], l->line);
 		}
 	} else if (tok == VAR) {
 		Token_t typ = tok;
@@ -97,6 +107,67 @@ astNode *Statement(Lexer *l, Lexval *val) {
 	unGetToken(l, val, tok);
 
 	return Expression(l, val);
+}
+
+astNode *Retrn(Lexer *l, Lexval *val) {
+	Token_t tok = getNextToken(l, val);
+	if (tok == RETRN) {
+		return unopNode(RETRN_nd, Expression(l, val));
+	}
+	syntaxError("return statement", tokens[tok], l->line);
+	return NULL;
+}
+
+astNode *FuncDec(Lexer *l, Lexval *val) {
+	Token_t tok = getNextToken(l, val);
+	if (tok == FUNC) {
+		if ((tok = getNextToken(l, val)) == VAR) {
+			Lexval varVal = *val;
+			if ((tok = getNextToken(l, val)) == LPAREN) {
+				// Load template frame
+				varVal.sym->templt = newFrame();
+				varVal.sym->type = FUNCTION;
+				loadFrame(varVal.sym->templt);
+
+				// Arguments
+				astNode *args = NULL;
+				astNode *curArg = NULL;
+				if ((tok = getNextToken(l, val)) == VAR) {
+					args = curArg = opNode(ARG_nd, varNode(val), NULL);
+					
+					while ((tok = getNextToken(l, val)) == COMMA) {
+						if ((tok = getNextToken(l, val)) == VAR) {
+							curArg->next = opNode(ARG_nd, varNode(val), NULL);
+							curArg = curArg->next;
+						} else {
+							syntaxError("argument name", tokens[tok], l->line);
+						}
+					}
+					unGetToken(l, val, tok);
+				} else unGetToken(l, val, tok);
+
+				// End of arguments
+				if ((tok = getNextToken(l, val)) == RPAREN) {
+					astNode *funcnode = opNode(FUNCDEC_nd, varNode(&varVal), NULL);
+					
+					funcnode->next = args;
+					
+					if ((tok = getNextToken(l, val)) != NL) {
+						unGetToken(l, val, tok);
+					}
+					
+					funcnode->op.right = Statement(l, val);
+					
+					// Unload template frame
+					popFrame();
+
+					return funcnode;
+				} else syntaxError("right parentheses", tokens[tok], l->line);
+			} else syntaxError("left parentheses", tokens[tok], l->line);
+		}
+	}
+	syntaxError("function declaration", tokens[tok], l->line);
+	return NULL;
 }
 
 astNode *Print(Lexer *l, Lexval *val) {
@@ -149,7 +220,7 @@ astNode *If(Lexer *l, Lexval *val) {
 		
 		return ifnode;
 	}
-	syntaxError("if statement", tokens[tok]);
+	syntaxError("if statement", tokens[tok], l->line);
 	return NULL;
 }
 
@@ -163,7 +234,7 @@ astNode *While(Lexer *l, Lexval *val) {
 
 		return opNode(WHILE_nd, condition, Statement(l, val));
 	}
-	syntaxError("while statement", tokens[tok]);
+	syntaxError("while statement", tokens[tok], l->line);
 	return NULL;
 }
 
@@ -371,7 +442,7 @@ astNode *Expo(Lexer *l, Lexval *val) {
 }
 
 astNode *Final(Lexer *l, Lexval *val) {
-	// BLTIN'('Expression')'|NUM|'('Expression')'|VAR
+	// BLTIN'('Expression')'|NUM|'('Expression')'|VAR|FUNCTION'('Expression...')'|STRING
 	Token_t tok = getNextToken(l, val);
 	if (tok == NUMBER) {
 		return numNode(val->value);
@@ -379,6 +450,34 @@ astNode *Final(Lexer *l, Lexval *val) {
 		return strNode(val);
 	} else if (tok == VAR) {
 		return varNode(val);
+	} else if (tok == FUNCTION) {
+		Symbol *s = val->sym;
+		if ((tok = getNextToken(l, val)) == LPAREN) {
+			// Arguments
+			astNode *args = NULL;
+			astNode *curArg = NULL;
+			if ((tok = getNextToken(l, val)) != RPAREN) {
+				unGetToken(l, val, tok);
+				args = curArg = opNode(ARG_nd, Expression(l, val), NULL);
+				
+				while ((tok = getNextToken(l, val)) == COMMA) {
+					curArg->next = opNode(ARG_nd, Expression(l, val), NULL);
+					curArg = curArg->next;
+				}
+				unGetToken(l, val, tok);
+			} else unGetToken(l, val, tok);
+			// End of arguments
+
+			if ((tok = getNextToken(l, val)) == RPAREN) {
+				astNode *fncNode = unopNode(FNC_nd, args);
+				fncNode->sym = s;
+				return fncNode;
+			} else {
+				syntaxError(")", tokens[tok], l->line);
+			}
+		} else {
+			syntaxError("(", tokens[tok], l->line);
+		}
 	} else if (tok == BLTIN) {
 		Symbol *s = val->sym;
 		if ((tok = getNextToken(l, val)) == LPAREN) {
@@ -388,24 +487,24 @@ astNode *Final(Lexer *l, Lexval *val) {
 				bltNode->sym = s;
 				return bltNode;
 			} else {
-				syntaxError(")", tokens[tok]);
+				syntaxError(")", tokens[tok], l->line);
 			}
 		} else {
-			syntaxError("(", tokens[tok]);
+			syntaxError("(", tokens[tok], l->line);
 		}
 	} else if (tok == LPAREN) {							// Parse '('
 		astNode *node = Expression(l, val);				// Prase Expression
 		if ((tok = getNextToken(l, val)) != RPAREN) {	// Parse ')'
-			syntaxError(")", tokens[tok]);
+			syntaxError(")", tokens[tok], l->line);
 		}
 		return node;
 	}
 
-	syntaxError("number", tokens[tok]);
+	syntaxError("Expression", tokens[tok], l->line);
 	return NULL;
 }
 
-void syntaxError(char *wanted, char *got) {
-	fprintf(stderr, "Syntax error: wanted '%s', got '%s'\n", wanted, got);
+void syntaxError(char *wanted, char *got, int line) {
+	fprintf(stderr, "Syntax error (%d): wanted '%s', got '%s'\n", line, wanted, got);
 	abort();
 }

@@ -14,7 +14,15 @@ StatementList:
 	((Statement)?\n)* END
 
 Statement:	
-	Expression|Assignment|If|While|'{'StatementList'}'|BREAK|CONTINUE|Print
+	Expression|Assignment|If|While|
+	'{'StatementList'}'|BREAK|
+	CONTINUE|Print|FuncDec|Retrn
+
+Retrn:
+	RETURN Expression
+
+FuncDec:
+	'func' VAR'('(VAR(,VAR)*)?')'\n? Statement
 
 If:
 	IF Expression\n? Statement (ELSE Statement)?
@@ -53,7 +61,7 @@ Expo:
 	Final('^'Final)*
 
 Final:
-	BLTIN'('Expression')'|VAR|NUM|'('Expression')'|STRING
+	BLTIN'('Expression')'|VAR|NUM|'('Expression')'|STRING|FUNC'('Expression{NARGS}')'
 
 This produces the following operator precedence
 Operator	Description				Associativity
@@ -76,8 +84,9 @@ astNode *StatementList(Lexer *l, Lexval *val, bool exec);
 // All of the following take (Lexer *l, Lexval *val) arguments
 astNode *Statement(), *Expression(), *LogicOR(), *Print(),
 		*LogicAND(), *EqRelOp(), *SzRelOp(), *Assignment(),
-		*Term(), *Factor(), *Expo(), *Final(), *If(), *While();
+		*Term(), *Factor(), *Expo(), *Final(), *If(), *While(),
+		*FuncDec(), *Retrn();
 
-void syntaxError(char *wanted, char *got);
+void syntaxError(char *wanted, char *got, int line);
 
 #endif

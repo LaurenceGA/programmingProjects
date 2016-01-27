@@ -7,9 +7,10 @@
 /* arm is a simple interpreted language */
 
 bool SHOWTREE = false;
+bool VARDUMP = false;
 
 void printUsage(char *progName) {
-	fprintf(stderr, "usage: %s [-t] [inputFile]\n", progName);
+	fprintf(stderr, "usage: %s [-tv] [inputFile]\n", progName);
 }
 
 int main(int argc, char *argv[]) {
@@ -32,6 +33,10 @@ int main(int argc, char *argv[]) {
 			switch (argv[1][i]) {
 				case 't':
 					SHOWTREE = true;
+					break;
+
+				case 'v':
+					VARDUMP = true;
 					break;
 
 				default:

@@ -40,6 +40,8 @@ static struct {
 	{"continue", CONTINUE},
 	{"print", PRINT},
 	{"println", PRINTLN},
+	{"func", FUNC},
+	{"return", RETRN},
 	{0, 0}
 };
 
