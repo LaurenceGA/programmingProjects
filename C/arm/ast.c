@@ -105,7 +105,12 @@ double getValue(astNode *root) {
 				Frame *frm = callFunc(root);
 				if (retrn) {
 					retrn  = false;
-					return frm->retrn.val;
+					if (frm->retrn.type == NUMBER) {
+						return frm->retrn.val;
+					} else {
+						fprintf(stderr, "Function returns string, can't get value\n");
+						abort();
+					}
 				} else {
 					fprintf(stderr, "Nothing returned!\n");
 					abort();
@@ -316,6 +321,19 @@ void execute(astNode *root) {
 								printf("%g", getValue(p->op.left));
 							} else {
 								printf("%s", p->op.left->sym->str);
+							}
+						} else if (p->op.left->type == FNC_nd) {
+							Frame *frm = callFunc(root);
+							if (retrn) {
+								retrn  = false;
+								if (frm->retrn.type == NUMBER) {
+									printf("%g", frm->retrn.val);
+								} else {
+									printf("%s", frm->retrn.str);
+								}
+							} else {
+								fprintf(stderr, "Nothing returned!\n");
+								abort();
 							}
 						} else
 							printf("%g", getValue(p->op.left));

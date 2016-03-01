@@ -33,7 +33,7 @@ typedef struct Frame {
 	int nargs;
 	struct Frame *next;
 	struct {
-		short type;
+		short type;	// STRING or NUMBER
 		union {
 			double val;
 			char *str;
