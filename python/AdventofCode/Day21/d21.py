@@ -27,7 +27,7 @@ class Item(object):
     def __str__(self):
         return "{}: cost({}), dmg({}), armor({})".format(self.name, self.cost, self.damage, self.armor)
 
-shop_data = [line.rstrip() for line in open('test_items')]
+shop_data = [line.rstrip() for line in open('shop_items.txt')]
 
 shop = {}
 
@@ -43,10 +43,11 @@ for line in shop_data:
         header = None
         continue
 
-    # item_info = [l.strip() for l in line.split()]
     m = re.match(R'(\w+|\w+\s+\+\d)\s+(\d+)\s+(\d+)\s+(\d+)$', line)
-    # m = re.match(R'(.+)(\w+).*$', line)
+    # print(m.groups())
     shop[header].append(Item(header, m.group(1), int(m.group(2)), int(m.group(3)), int(m.group(4))))
+
+shop['Armor'].append(Item('Armor', 'None', 0, 0, 0))
 
 
 class Fighter(object):
@@ -65,9 +66,9 @@ class Fighter(object):
                 print("Can't have multiple weapons!")
             self.weapon = item
         elif item.typ == 'Armor':
-            if self.armor:
+            if self.armor_item:
                 print("Can't have multiple Armor!")
-            self.armor = item
+            self.armor_item = item
         elif item.typ == 'Rings':
             if len(self.rings) >= 2:
                 print("No more rings")
@@ -77,7 +78,7 @@ class Fighter(object):
         self.armor = self.get_def()
 
     def get_attack(self):
-        attck = self.damage
+        attck = 0
         if self.weapon:
             attck += self.weapon.damage
         for r in self.rings:
@@ -85,8 +86,8 @@ class Fighter(object):
         return attck
 
     def get_def(self):
-        defnse = self.armor
-        if self.armor:
+        defnse = 0
+        if self.armor_item:
             defnse += self.armor_item.armor
         for r in self.rings:
             defnse += r.armor
@@ -100,24 +101,39 @@ class Fighter(object):
         return "HP: {}, DMG: {}, ARM: {}".format(self.health, self.damage, self.armor)
 
 
-boss = Fighter(inp['Hit Points'], inp['Damage'], inp['Armor'])
-player = Fighter(100)
-
-item_sets = [[]]
+item_sets = []
 
 for i in shop['Weapons']:
     item_set = [i]
-    pass
-
     item_sets.append(item_set)
+    for j in shop['Armor']:
+        new_item_set = item_set[:]
+        new_item_set.append(j)
+        item_sets.append(new_item_set)
+        for lring in shop['Rings']:
+            new_ring_item_set = new_item_set[:]
+            new_ring_item_set.append(lring)
+            item_sets.append(new_ring_item_set)
+            for rring in shop['Rings']:
+                if rring != lring:
+                    new_rring_item_set = new_ring_item_set[:]
+                    new_rring_item_set.append(rring)
+                    item_sets.append(new_rring_item_set)
+
 
 def fight(f1, f2):
     f1_turn = True
+    # print(f1)
+    # print(f2)
+    # print('Boss hp {}, player hp {}'.format(f2.health, f1.health))
     while f1.health > 0 and f2.health > 0:
+
         if f1_turn:
             f2.take_damage(f1.damage)
+            # print('boss on {}'.format(f2.health))
         else:
             f1.take_damage(f2.damage)
+            # print('player on {}'.format(f1.health))
 
         f1_turn = not f1_turn
 
@@ -125,3 +141,48 @@ def fight(f1, f2):
         return 0
     else:
         return 1
+
+
+def get_gold(item_set):
+    cst = 0
+
+    for i in item_set:
+        cst += i.cost
+
+    return cst
+
+
+def do_battle(item_set):
+    boss = Fighter(inp['Hit Points'], inp['Damage'], inp['Armor'])
+    player = Fighter(100)
+    for i in item_set:
+        player.add_item(i)
+
+    if fight(player, boss) == 0:
+        return item_set
+    else:
+        return None
+
+winning_sets = []
+losing_sets = []
+for i_set in item_sets:
+    win_set = do_battle(i_set)
+
+    if win_set is not None:
+        winning_sets.append(win_set)
+    else:
+        losing_sets.append(i_set)
+
+# winning_sets = sorted(winning_sets, key=lambda x: get_gold(x))
+# for s in winning_sets:
+#     print(get_gold(s), end=': ')
+#     for i in s:
+#         print(i, end=', ')
+#     print()
+
+losing_sets = sorted(losing_sets, key=lambda x: get_gold(x))
+for s in losing_sets:
+    print(get_gold(s), end=': ')
+    for i in s:
+        print(i, end=', ')
+    print()
