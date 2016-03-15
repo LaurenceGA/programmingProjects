@@ -20,7 +20,7 @@ false_for_count = 0
 
 operations = 0
 
-while i <= 2**n:
+while i < 2**n:
     outer_counter += 1
 
     if i <=4 or i >= 2**(n-2):
@@ -56,9 +56,9 @@ def run_algo(n):
 
     ops = 0
 
-    while i <= 2**n:
+    while i < 2**n:
 
-        if i <=4 or i >= 2**(n-2):
+        if i <= 4 or i >= 2**(n-2):
             j = n
             while j >= 0:
                 j -= 2
@@ -66,16 +66,19 @@ def run_algo(n):
         else:
             j = n
             while j > 1:
-                j /= 2
+                j = math.ceil(j/2)
                 ops += 1
 
         i *= 2
 
     print("----------------------------")
-    expected_ops = (n-5) * math.ceil(math.log(n, 2)) + 6*(math.floor(n / 2) + 1)
+    expected_ops = (n-5) * math.ceil(math.log(n, 2)) + 5*(math.floor(n / 2) + 1)
     print("n:", n)
     print("Expected operations: ", expected_ops)
     print("operations:", ops)
+    if expected_ops != ops:
+        print("FAIL")
+        return
     print("----------------------------")
 
 

@@ -24,36 +24,45 @@ class ImageReader(object):
             for col in range(self.width):
                 px = self.image.getPixel(col, row)
 
-                self.lsbs.append(px.getRed() & 1)
-                self.lsbs.append(px.getGreen() & 1)
-                self.lsbs.append(px.getBlue() & 1)
+                # self.lsbs.append(px.getRed() & 1)
+                # self.lsbs.append(px.getGreen() & 1)
+                # self.lsbs.append(px.getBlue() & 1)
+                self.lsbs.extend([px.getRed() & 1, px.getGreen() & 1, px.getBlue() & 1])
 
         self.read_pos = 0
         print("read image...\n")
 
     def get_next_bit(self):
         b = self.lsbs[self.read_pos]
+        # print("{}: {}".format(self.read_pos, b))
         self.read_pos += 1
         return b
 
     def read_text_length(self):
         # Read the first 32 LSBs
-        length = self.get_next_bit()
-        for i in range(31):
-            length <<= 1
-            length |= self.get_next_bit()
+        length = []
+        # length = self.get_next_bit()
+        for i in range(32):
+            length.insert(0, str(self.get_next_bit()))
+            # length <<= 1
+            # length |= self.get_next_bit()
+
+        length = int("".join(length), 2)
 
         # Reverse
-        length = int(bin(length)[:1:-1], 2)
+        # length = int(bin(length)[:1:-1], 2)
         # self.get_next_bit()
 
         return length
 
     def get_next_byte(self):
-        char = self.get_next_bit()
-        for i in range(7):
-            char <<= 1
-            char |= self.get_next_bit()
+        char = []
+        for i in range(8):
+            # char <<= 1
+            # char |= self.get_next_bit()
+            char.insert(0, str(self.get_next_bit()))
+
+        char = int("".join(char), 2)
         # Reverse
         # char = int(bin(char)[:1:-1], 2)
         # self.get_next_bit()
@@ -66,35 +75,12 @@ reader = ImageReader(base_image)
 text_length = reader.read_text_length()
 print("Text length: {}".format(text_length))
 
-print(chr(reader.get_next_byte()), end="")
-print(chr(int(bin(reader.get_next_byte())[:1:-1], 2)), end="")
-print(chr(reader.get_next_byte()), end="")
-print(chr(int(bin(reader.get_next_byte())[:1:-1], 2)), end="")
-print(chr(int(bin(reader.get_next_byte())[:1:-1], 2)), end="")
-print(chr(int(bin(reader.get_next_byte())[:1:-1], 2)), end="")
-print(chr(reader.get_next_byte()), end="")
-print(chr(reader.get_next_byte()), end="")
-# print(int(bin(reader.get_next_byte())[:1:-1], 2))
-# print(int(bin(reader.get_next_byte())[:1:-1], 2))
+text_bytes = []
+for b in range(text_length):
+    text_bytes.append(reader.get_next_byte())
 
-
-# for b in range(text_length):
-# for b in range(5):
-#     byt = reader.get_next_byte()
-#
-#     print()
-#     print(byt)
-#     print()
-    # if byt < 32 or byt > 127:
-    #     print(chr(int(bin(byt)[:1:-1], 2)), end="")
-    # else:
-    #     print(chr(byt), end="")
-# print(chr(22))
-
-# for b in range(text_length):
-#     print(chr(reader.get_next_byte()), end="")
-    # print((reader.get_next_byte()), end=" ")
-    # c = reader.get_next_byte()
-    # print("c: {}".format(chr(c)))
+for b in text_bytes:
+    print(chr(b), end="")
+print()
 
 
