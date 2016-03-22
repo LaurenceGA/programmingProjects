@@ -20,6 +20,8 @@ class ImageReader(object):
 
         self.lsbs = []
 
+        self.bits_read = 0
+
         for row in range(self.height):
             for col in range(self.width):
                 px = self.image.getPixel(col, row)
@@ -34,7 +36,7 @@ class ImageReader(object):
 
     def get_next_bit(self):
         b = self.lsbs[self.read_pos]
-        # print("{}: {}".format(self.read_pos, b))
+        self.bits_read += 1
         self.read_pos += 1
         return b
 
@@ -83,4 +85,4 @@ for b in text_bytes:
     print(chr(b), end="")
 print()
 
-
+print("bits read: {}".format(reader.bits_read))

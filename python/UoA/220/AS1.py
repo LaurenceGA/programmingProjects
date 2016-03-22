@@ -57,7 +57,6 @@ def run_algo(n):
     ops = 0
 
     while i < 2**n:
-
         if i <= 4 or i >= 2**(n-2):
             j = n
             while j >= 0:
