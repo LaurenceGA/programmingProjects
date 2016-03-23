@@ -41,6 +41,3 @@ m = hashlib.md5()
 # ha1 = usrnm, realm, psswd
 # ha2 = method, uri
 # ha1, nonce, ha2
-txt = ""
-m.update(bytes(txt, "utf-8"))
-print(m.hexdigest())
