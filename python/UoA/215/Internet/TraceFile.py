@@ -9,6 +9,9 @@ stdout.write(authorship_string)
 
 import matplotlib.pyplot as plt
 import math
+import time
+
+start_time = time.clock()
 
 traceLines = []
 
@@ -139,8 +142,8 @@ def plot_packets_per_second(trace):
         packets_at_time.append(len(packets))
 
     plt.plot(time, packets_at_time)
-    plt.xlabel("time (s)")
-    plt.ylabel("packets")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Number of packets")
 
 
 def plot_bytes_per_second(trace):
@@ -153,8 +156,8 @@ def plot_bytes_per_second(trace):
         bytes_at_time.append(sum([len(packet)/1000 for packet in packets]))
 
     plt.plot(time, bytes_at_time)
-    plt.xlabel("time (s)")
-    plt.ylabel("data transferred (kB)")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Data transferred (kB)")
 
 
 def plot_packet_size_feq(trace):
@@ -162,26 +165,26 @@ def plot_packet_size_feq(trace):
     packet_sizes = [len(p) for p in trace.packets]
 
     plt.hist(packet_sizes, bins=(0, 200, 400, 1000, 1600))
-    plt.xlabel("frequency")
-    plt.ylabel("packet size (kB)")
+    plt.xlabel("Packet size (B)")
+    plt.ylabel("Frequency of packet size")
 
 
 def plot_packets_per_host(trace):
     plt.figure()
     packets_per_host = sorted(trace.packets_per_host().items(), key=lambda x: x[1], reverse=True)
 
-    plt.plot([math.log10(i) for i in range(1, len(packets_per_host)+1)], [math.log10(p[1]) for p in packets_per_host])
-    plt.xlabel("log(host rank)")
-    plt.ylabel("log(number of packets)")
+    plt.scatter([math.log10(i) for i in range(1, len(packets_per_host)+1)], [math.log10(p[1]) for p in packets_per_host])
+    plt.xlabel("log(Host rank)")
+    plt.ylabel("log(Number of packets)")
 
 
 def plot_packets_per_port(trace):
     plt.figure()
     packets_per_port = sorted(trace.packets_per_port().items(), key=lambda x: x[1], reverse=True)
 
-    plt.plot([math.log10(i) for i in range(1, len(packets_per_port)+1)], [math.log10(p[1]) for p in packets_per_port])
-    plt.xlabel("log(port rank)")
-    plt.ylabel("log(number of packets)")
+    plt.scatter([math.log10(i) for i in range(1, len(packets_per_port)+1)], [math.log10(p[1]) for p in packets_per_port])
+    plt.xlabel("log(Port rank)")
+    plt.ylabel("log(Number of packets)")
 
 print_stats(traceData)
 plot_packets_per_second(traceData)
@@ -189,6 +192,8 @@ plot_bytes_per_second(traceData)
 plot_packet_size_feq(traceData)
 plot_packets_per_host(traceData)
 plot_packets_per_port(traceData)
+
+print("Done in {} seconds".format(time.clock() - start_time))
 
 plt.show()
 
