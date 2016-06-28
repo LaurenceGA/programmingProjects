@@ -13,7 +13,7 @@ int main() {
 		Logger::Log("FAIL");
 	}
 
-	ParticleSystem rsys(sf::Vector2f(200, 150), 10000, sf::Color::Red, sf::seconds(2), &tex);
+	ParticleSystem rsys(sf::Vector2f(200, 150), 10000, sf::Color::Green, sf::seconds(2), &tex);
 	ParticleSystem gsys(sf::Vector2f(400, 150), 1000, sf::Color::Green, sf::seconds(3), &tex);
 	ParticleSystem bsys(sf::Vector2f(600, 150), 10000, sf::Color::Blue, sf::seconds(2), &tex);
 
@@ -43,7 +43,7 @@ int main() {
 		window.draw(bsys);
 
 		window.display();
-		
+
 	}
 
 

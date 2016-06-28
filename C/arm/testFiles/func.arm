@@ -1,5 +1,0 @@
-func giff(hi, hello, arg) {
-	println hi, hello, arg
-}
-
-giff("I", " am", " 5")
