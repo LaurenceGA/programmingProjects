@@ -12,13 +12,13 @@ int main() {
 	bool p1Turn = true;
 	bool waiting = false;
 	sf::Clock clock;
-	sf::Time waitTime = sf::seconds(3);
+	sf::Time waitTime = sf::seconds(1);
 
 	sf::Font font;
-	if (!font.loadFromFile("/usr/share/fonts/truetype/droid/DroidSans.ttf")) return 1;
+	if (!font.loadFromFile("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf")) return 1;
 	sf::Text endMessage;
 	endMessage.setFont(font);
-	endMessage.setColor(sf::Color::Red);
+	endMessage.setFillColor(sf::Color::Red);
 	endMessage.setPosition(SIZE/2, SIZE/4);
 
 	while (window.isOpen()) {

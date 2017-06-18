@@ -59,7 +59,7 @@ void Board::draw(sf::RenderWindow& window) {
 							sf::Vector2f(	// Pos
 								this->padding + i * tileWidth,	// x
 								this->padding + j * tileWidth),	// y
-							tileWidth - this->padding*2);					// width 
+							tileWidth - this->padding*2);					// width
 					break;
 				default:
 					break;
@@ -92,7 +92,7 @@ void Board::drawCross(sf::RenderWindow& window, sf::Vector2f pos, int width) {
 	line.setFillColor(this->foreCol);
 	line.setOrigin(sf::Vector2f(length/2, this->thickness/2));
 	line.setPosition(pos + sf::Vector2f(width/2, width/2));
-	
+
 	line.rotate(45);
 	window.draw(line);
 
@@ -112,7 +112,7 @@ bool Board::setTile(int x, int y, tile type) {
 bool Board::handleClick(float x, float y) {
 	int h = static_cast<int>(x / pixels * this->getSize());
 	int v = static_cast<int>(y / pixels * this->getSize());
-	
+
 	return setTile(h, v, tile::naught);
 }
 
@@ -204,8 +204,15 @@ void Board::setWinLine(sf::Vector2f o, float length, int angle) {
 }
 
 bool Board::AITurn() {
+        /*
+        First we see if we can just straight up win. We do so if possible
+        This isn't usually a common outcome.
+        Next we try to block the player from winning. This happens often.
+        If neither of those options work out, we just place a cross randomly
+        */
 	if (this->getSize() == 3) {		// Only for 3x3
 	// Try to win
+        // We go through each square and see if it provide a change to win
 	for (int i=0; i < this->getSize(); i++) {
 		for (int j=0; j < this->getSize(); j++) {
 			if (this->get(i, j) == tile::cross) {
@@ -217,6 +224,7 @@ bool Board::AITurn() {
 		}
 	}
 	// Try to block
+        // We go through each square, and see if we can block the player
 	for (int i=0; i < this->getSize(); i++) {
 		for (int j=0; j < this->getSize(); j++) {
 			if (this->get(i, j) == tile::naught) {
@@ -239,7 +247,7 @@ bool Board::AITurn() {
 	auto rand_pos = std::bind(dist, generator);
 
 	int cnt = 1;
-	int giveUp = 10000;
+	// int giveUp = 10000;
 
 	int p_x = rand_pos(), p_y = rand_pos();
 	while (this->get(p_x, p_y) != tile::empty) {
